@@ -1,0 +1,133 @@
+.main{
+    position: fixed;
+    width:100%;
+    height:100%;
+    top:0;
+    left:0;
+    z-index: 6;
+    background-color:rgba(0,0,0,.6);
+    opacity: 0;
+    pointer-events: none;
+    transition:.3s all;
+}
+
+.main.active{
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.main .content{
+    width:320px;
+    height:100%;
+    position: relative;
+    left:-400px;
+    background-color:var(--main-background);
+    transition: .7s all;
+    z-index: 5;
+}
+
+.main .content.active{
+    left:0;
+}
+
+.main .head{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    position:relative;
+    padding:25px 25px;
+}
+
+.main .head span{
+    cursor: pointer;
+    font-size:17px;
+    font-weight:450;
+}
+
+.main .head span svg{
+    margin-left:5px;
+    font-size:32px;
+    position: relative;
+    top:5px;
+}
+
+.main .options ul li{
+    padding:20px 25px;
+    font-size:15px;
+    font-weight:400;
+    position:relative;
+    cursor: pointer;
+    color:var(--main-font-color)
+}
+
+.main .options ul li:hover{
+    font-weight:bold;
+}
+
+.main > .options ul li::after,.main .head::after{
+    position:absolute;
+    content:"";
+    bottom:0;
+    left:0;
+    width:100%;
+    height:1px;
+    background-color:var(--main-border-color);
+}
+
+.main .options ul li .user .head{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main .options ul li .user .profileImg{
+    width:44px;
+    height:44px;
+    border-radius: 50%;
+    border: 1px solid var(--main-border-color);
+}
+
+.main .options ul li .user .profileImg img{
+    width:100%;
+    height:100%;
+    border-radius: 50%;
+}
+
+.main .options ul li .user h3{
+    margin-left:10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size:14px;
+    font-weight:500;
+    text-transform: capitalize;
+}
+
+.main .options ul li .user h3 svg{
+    margin-left:7px;
+    font-size:13px;
+}
+
+.main .foot{
+    margin-top:25px;
+    font-size:14px;
+    font-weight:bold;
+    text-align: center;
+}
+
+.main .foot .toggle{
+    text-align: left;
+    padding:5px 25px;
+}
+
+.main .foot .toggle svg{
+    font-size: 30px;
+    position: relative;
+    top:7px;
+    left:10px;
+    cursor: pointer;
+}
+
+.main::selection{
+    background-color: transparent;
+}

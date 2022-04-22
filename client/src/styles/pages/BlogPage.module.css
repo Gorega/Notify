@@ -1,0 +1,240 @@
+.blog{
+    position: relative;
+    top:200px;
+    padding-bottom:100px;
+    z-index: 3;
+    color:var(--main-font-color)
+}
+
+.blog .head{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom:60px;
+}
+
+.blog .head h2{
+    font-size:16px;
+    text-transform: capitalize;
+    line-height: 1.4;
+}
+
+.blog .head h2 span{
+    color:#49C5B6;
+    cursor: pointer;
+}
+
+.blog .head .add{
+    display: inline-flex;
+    align-items: center;
+}
+
+.blog .head .add span{
+    border: 1px solid var(--main-border-color);
+    border-radius: 25px;
+    margin-right:15px;
+    font-size:13px;
+    padding:7px 30px;
+    font-weight:500;
+    cursor: pointer;
+}
+
+.blog .body{
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    width: 80%;
+    padding:25px 40px;
+    margin:auto;
+    text-align: center;
+}
+
+.blog .body h2{
+    font-size:22px;
+    font-weight:bold;
+    line-height:1.6;
+}
+
+.blog .body pre{
+    margin-top:15px;
+    font-size:13px;
+    font-weight:450;
+}
+
+.blog .body pre span{
+    color:#49C5B6;
+    font-weight:450;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+.blog .body > img{
+    margin-top:25px;
+    width:80%;
+    height:70vh;
+}
+
+.blog .body > p{
+    font-size:15px;
+    line-height: 1.8;
+    width:75%;
+    margin:25px auto;
+    text-align:left;
+}
+
+.blog .body .comments{
+    padding-top:50px;
+    width:65%;
+    margin:auto;
+}
+
+.blog .body .comments h2{
+    text-align: left;
+    font-size:15px;
+    font-weight: 450;
+    border-bottom:1px solid var(--main-border-color);
+    padding-bottom:5px;
+}
+
+.blog .body .comments .write{
+    display: flex;
+    align-items: center;
+    margin-top:20px;
+}
+
+.blog .body .comments .write img{
+    width:37px;
+    height:37px;
+    cursor: pointer;
+    border-radius: 50%;
+    border:1px solid var(--main-border-color)
+}
+
+.blog .body .comments .write form{
+    width: 100%;
+    height:50px;
+    display: flex;
+    align-items: center;
+}
+
+.blog .body .comments .write form input{
+    margin-left:15px;
+    width:80%;
+    height:50px;
+    border:1px solid var(--main-border-color);
+    background-color: transparent;
+    padding-left:5px;
+    color:var(--main-font-color);
+    overflow: hidden;
+    line-height:1.8;
+}
+
+.blog .body .comments .write form button{
+    position: relative;
+    top:-10px;
+    width: 20%;
+    height:50px;
+    color:var(--main-font-color);
+    border:1px solid var(--main-border-color);
+    padding:8px 30px;
+    background-color: var(--main-background-color);
+    cursor: pointer;
+    font-size:13px;
+}
+
+.blog .body .comments .write input:focus{
+    outline:none;
+}
+
+.blog .body .comments .viewComments{
+    cursor: pointer;
+    font-size:14px;
+    font-weight: 450;
+    width: fit-content;
+    margin:25px auto;
+}
+
+.blog .body .comments .singleComment{
+    margin-top:25px;
+    margin-bottom:15px;
+    transition:3s all;
+}
+
+.blog .body .comments .singleComment .in{
+    display: flex;
+    align-items:center;
+    margin-bottom:40px;
+}
+
+.blog .body .comments .singleComment .image{
+    width:37px;
+    height:37px;
+    cursor: pointer;
+    border: 1px solid var(--main-border-color); 
+    border-radius: 50%;
+}
+
+.blog .body .comments .singleComment .image img{
+    width:100%;
+    height:100%;
+    border-radius: 50%;
+}
+
+.blog .body .comments .singleComment .info{
+    margin-left:15px;
+    text-align: left;
+    width:100%;
+}
+
+.blog .body .comments .singleComment .info h3{
+    font-size:13px;
+    margin-bottom:7px;
+    cursor: pointer;
+    text-transform: capitalize;
+    width: fit-content;
+}
+
+.blog .body .comments .singleComment .info p{
+    font-size:14px;
+    line-height:1.5
+}
+
+@media(max-width:992px){
+    .blog{
+        top:150px;
+    }
+
+    .blog .head{
+        display: block;
+    }
+
+    .blog .head .add{
+        margin-top:30px;
+    }
+
+    .blog .body{
+        width: 100%;
+        padding:25px 10px;
+
+    }
+
+    .blog .body > img{
+        width: 100%;
+        height:100%;
+    }
+    
+    .blog .body > p{
+        width: 100%;
+        font-size:14px;
+    }
+
+    .blog .body .comments{
+        width:90%;
+    }
+    
+    .blog .body .comments .singleComment .info p{
+        font-size:12px;
+    }
+
+    .blog .body .comments .write form button{
+        width: 30%;
+    }
+}

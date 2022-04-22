@@ -1,0 +1,42 @@
+.about{
+    margin-top:50px;
+}
+
+.about .info{
+    margin-bottom:40px;
+}
+
+.about .info h3{
+    font-size:15px;
+    font-weight:450;
+    margin-bottom:30px;
+    font-weight:450;
+    text-transform: uppercase;
+    position: relative;
+}
+
+.about .info h3::after{
+    position: absolute;
+    bottom:-5px;
+    left:0;
+    width:3%;
+    height:1px;
+    background-color:#49C5B6;
+    content:""
+}
+
+.about .info .sec{
+    font-size:15px;
+    font-weight:500;
+    margin-bottom:25px;
+}
+
+.about .info .sec pre{
+    margin-left:6px;
+}
+
+.about .info .sec span{
+    margin-left:30px;
+    font-weight: 450;
+    color:#49C5B6;
+}

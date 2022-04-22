@@ -1,0 +1,200 @@
+.settings{
+    position: relative;
+    padding-top:200px;
+    padding-bottom:100px;
+    z-index: 3;
+    color:var(--main-font-color);
+    margin:auto;
+}
+
+.settings .holder{
+    display: flex;
+    margin:auto;
+}
+
+.settings .holder .leftSec{
+    width:20%;
+    border-right:1px solid var(--main-border-color)
+}
+
+.settings .holder .leftSec .head{
+    margin:25px auto;
+    position: relative;
+}
+
+.settings .holder .leftSec .head .image{
+    width:170px;
+    height:160px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    border-radius: 50%;
+    cursor: pointer;
+    position: relative;
+    margin:auto;
+}
+
+.settings .holder .leftSec .head .image img{
+    width:100%;
+    height:100%;
+    border-radius: 50%;
+}
+
+.settings .holder .leftSec .head .image form label{
+    position:absolute;
+    top:5px;
+    right:10px;
+    background-color:#49C5B6;
+    color:white;
+    border-radius: 50%;
+    width:33px;
+    height:33px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.settings .holder .leftSec .head .image form label span{
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    color:white;
+    font-size:17px;
+    font-weight:bold;
+}
+
+.settings .holder .leftSec .head h2{
+    margin-top:15px;
+    font-size:15px;
+    font-weight:450;
+    text-align: center;
+}
+
+.settings .holder .leftSec ul{
+    margin-top:100px;
+    margin-left:45px;
+}
+
+.settings .holder .leftSec ul li{
+    display: inline-flex;
+    align-items: center;
+    margin-bottom:35px;
+    font-size:15px;
+    font-weight:500;
+    cursor: pointer;
+    padding:10px;
+    line-height: 1.4;
+}
+
+.settings .holder .leftSec ul li svg{
+    margin-right:15px;
+}
+
+.settings .holder .leftSec ul li.active{
+    color:#49C5B6;
+    font-weight:bold;
+    position: relative;
+}
+
+.settings .holder .leftSec ul li.active::after{
+    content:"";
+    position: absolute;
+    top:0;
+    left:-10px;
+    width:2px;
+    height:100%;
+    background-color:#49C5B6;
+}
+
+.settings .holder .rightSec{
+    width:70%;
+    margin-left:100px;
+}
+
+.settings .image .saveBar{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top:-25px;
+    font-weight:300;
+    color:white;
+    border-radius: 25px;
+    font-size:12px;
+    text-align: center;
+}
+
+.settings .image .saveBar span{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #49C5B6;
+    width:26px;
+    height:26px;
+    border-radius: 50%;
+    color:white;
+    font-weight: bold;
+    font-size:10px;
+}
+
+.settings .image .saveBar span:last-of-type{
+    margin-left:14px;
+    background-color: black;
+}
+
+.settings .image .loading{
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    font-size:27px;
+}
+
+@media(max-width:767px){
+
+    .settings .holder .leftSec ul{
+        display: flex;
+        justify-content: center;
+    }
+
+    .settings .holder .leftSec ul li svg{
+        font-size:18px;
+    }
+    .settings .holder .leftSec ul li .title{
+        display: none;
+    }
+}
+
+@media(max-width:992px){
+    .settings{
+        top:-100px;
+        padding-bottom:0;
+    }
+
+    .settings .holder{
+        display: block;
+    }
+
+    .settings .holder .leftSec,.settings .holder .rightSec{
+        width: 100%;
+        margin-left:0;
+        border-right:none
+    }
+
+    .settings .holder .leftSec ul{
+        display: flex;
+        justify-content: center;
+    }
+
+    .settings .holder .leftSec ul li{
+        display: inline-flex;
+        font-size:15px;
+        margin-right:20px;
+        font-weight:500;
+        cursor: pointer;
+    }
+
+    .settings .holder .leftSec ul li.active::after{
+        display: none;
+    }
+
+
+}

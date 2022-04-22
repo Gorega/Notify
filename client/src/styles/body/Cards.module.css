@@ -1,0 +1,94 @@
+.cards{
+    position: relative;
+    top:200px;
+    padding-bottom:30px;
+    z-index: 3;
+    color:var(--main-font-color);
+    width: 100%;
+}
+
+.cards section{ 
+    font-size:20px;
+    font-weight:450;
+    text-transform: capitalize;
+    position: relative;
+}
+
+.cards section .addPost{
+    position: absolute;
+    right:5px;
+    top:-7px;
+    background-color: black;
+    color:white;
+    width:33px;
+    height:33px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size:12px;
+    display: none;
+}
+
+.cards .cardsHolder{
+    margin:45px 0;
+    display:grid;
+    grid-template-columns: repeat(3,33.33333%);
+    grid-gap: 25px;
+}
+
+.cards section .more{
+    margin:auto;
+    text-align: center;
+    margin-top:70px;
+}
+
+.cards section .more button{
+    padding:20px 50px;
+    font-size:13px;
+    border:1px solid var(--main-border-color);
+    cursor: pointer;
+    background-color: var(--main-background);
+    color:var(--main-font-color)
+}
+
+@media(max-width:768px){
+    .cards{
+        top:120px;
+    }
+
+    .cards .cardsHolder{
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .cards section{
+        font-size:15px;
+    }
+
+    .cards section .addPost{
+        display: flex;
+    }
+}
+
+@media(min-width:770px) and (max-width:992px){
+    .cards{
+        top:120px;
+    }
+
+    .cards .cardsHolder{
+        grid-template-columns: repeat(2,50%);
+    }
+
+    .cards section .addPost{
+        display: flex;
+    }
+}
+
+@media(min-width: 1400px){
+    .cards .cardsHolder{
+        grid-template-columns: repeat(4,25%);
+    }
+}

@@ -1,0 +1,92 @@
+.main h2{
+ font-size:19px;
+ font-weight:400;
+ margin-top:30px;
+}
+
+.main .form{
+    margin-top:40px;
+    width:50%;
+}
+
+.main .gridForm{
+    display: grid;
+    grid-template-columns: repeat(2,50%);
+    grid-gap: 30px;
+}
+
+.main .form .sec{
+    margin-bottom:40px;
+    position: relative;
+}
+
+.main .form .sec label{
+    font-size:13px;
+    font-weight:450;
+}
+
+.main .form .sec input,.main .form .sec select{
+    margin-top:15px;
+    padding-left:5px;
+    height:50px;
+    width:100%;
+    border:1px solid var(--main-border-color);
+    color:var(--main-font-color);
+    background-color: transparent;
+}
+
+.main .form .sec input.disabled{
+    cursor:not-allowed;
+}
+
+.main .form .sec input:focus,.main .form .sec select:focus{
+    outline: none;
+}
+
+.main .form .sec input::-webkit-calendar-picker-indicator{
+    margin-right:7px;
+    background-color:transparent;
+    cursor: pointer;
+}
+
+.main .form .sec svg{
+    position: absolute;
+    bottom:17px;
+    right:15px;
+    cursor: pointer;
+    font-size:15px;
+    color:#49C5B6;
+}
+
+.body .form .sec .msg{
+    text-align: center;
+    color:red;
+    font-size:13px;
+    font-weight:500;
+}
+
+.main button{
+       border:none;
+       background-color:#49C5B6;
+       color:white;
+       cursor: pointer;
+       font-size:15px;
+       border-radius: 25px;
+       padding:12px 30px;
+}
+
+@media(max-width:767px){
+    .main .gridForm{
+        display: block;
+    }
+}
+
+@media(max-width:992px){
+    .main .form{
+        width: 100%;
+    }
+
+    .main button{
+        font-size:14px;
+    }
+}

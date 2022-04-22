@@ -1,0 +1,243 @@
+.body{
+    position: relative;
+    color:var(--main-font-color);
+}
+
+.body > h2{
+    font-size:17px;
+    font-weight:500;
+    text-align: center;
+    position:relative;
+    padding:10px 20px;
+}
+
+.body h2::after{
+    position:absolute;
+    content:"";
+    bottom:0;
+    left:0;
+    width:100%;
+    height:1px;
+    background-color: var(--main-border-color);
+}
+
+.body .user{
+    display: inline-flex;
+    align-items: center;
+    margin-top:25px;
+    padding:0 20px;
+}
+
+.body .user .image{
+    width:55px;
+    height:55px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.body .user .image img{
+    width:100%;
+    height:100%;
+    border-radius: 50%;
+}
+
+.body .user .info{
+    margin-left:20px;
+}
+
+.body .user .info h2{
+    font-size:14px;
+    font-weight:500;
+    cursor: pointer;
+}
+
+.body .user .info select{
+    margin-top:15px;
+    background-color: var(--main-background);
+    color:var(--main-font-color);
+    width:fit-content;
+    height:30px;
+    font-size: 12px;
+    border: 1px solid var(--main-border-color);
+    text-transform: capitalize;
+}
+
+.body .user .info select.error{
+    outline:1px solid red;
+}
+
+.body .post{
+    margin-top:25px;
+    padding:0 20px;
+}
+
+.body .post textarea,.body .post input{
+    background-color: var(--main-background);
+    color:var(--main-font-color);
+    padding-left:5px;
+    font-size:14px;
+    width:100%;
+    height:200px;
+    border:none;
+    max-width:520px;
+    max-height:300px;
+    border: 1px solid var(--main-border-color);
+    padding-top:5px;
+}
+
+.body .post input{
+    height:40px;
+    margin-bottom:20px;
+}
+
+.body .post textarea:focus,.body .user .info select:focus,.body .post input:focus{
+    outline: none;
+}
+
+.body .submit{
+    padding:0 20px;
+}
+
+.body button{
+    margin-top:30px;
+    width:100%;
+    height:40px;
+    font-weight:bold;
+    border-radius: 5px;
+    background-color: #49C5B6;
+    font-size:14px;
+    color:white;
+    cursor: pointer;
+    border:none;
+    pointer-events:none;
+    opacity: .6;
+}
+
+.body button.active{
+    pointer-events: auto;
+    opacity: 1;
+}
+
+.upload{
+    width:100%;
+    height:200px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    padding:10px 20px;
+    position: relative;
+    overflow: auto;
+}
+
+.upload .overlay{
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    border-radius: 5px;
+}
+
+.upload .overlay label{
+    cursor: pointer;
+    position: relative;
+}
+
+.upload .overlay label svg{
+    position: relative;
+    left:50%;
+    top:-10px;
+    font-size:30px;
+    transform: translateX(-50%);
+}
+
+.upload .overlay label h3{
+    text-align: center;
+    margin:auto;
+    font-size:13px;
+}
+
+.upload .uploadedImage{
+    margin-top:10px;
+    position: relative;
+    width:100%;
+    height:400px;
+}
+
+.upload .uploadedImage img{
+    width:100%;
+    height:100%;
+}
+.upload .uploadedImage .loading{
+    position: absolute;
+    top:15%;
+    left:50%;
+    font-size:35px;
+    transform: translateX(-50%);
+}
+
+.upload .uploadedImage .close{
+    position: absolute;
+    right:10px;
+    top:10px;
+    background-color: black;
+    color:white;
+    width:33px;
+    height:33px;
+    border-radius: 50%;
+    text-align:center;
+    padding-top:8px;
+    cursor:pointer;
+}
+
+
+.upload .details .icon{
+    position: absolute;
+    bottom:10px;
+    right:10px;
+    padding-top:3px;
+    background-color: #49C5B6;
+    width:27px;
+    height:27px;
+    border-radius: 50%;
+    text-align: center;
+    color:white;
+    cursor: pointer;
+}
+
+.upload .details .icon svg{
+    font-size:10.5px;
+}
+
+.upload .details span{
+    position: absolute;
+    bottom:42px;
+    border-radius: 5px;
+    padding:6px 10px;
+    right:10px;
+    font-size:11px;
+    text-align: left;
+    background-color: black;
+    color:white;
+}
+
+.upload .return{
+    cursor: pointer;
+    width: fit-content;
+    font-size: 20px;
+}
+
+.error{
+    margin-top:10px;
+    color:red;
+    text-align: center;
+    font-size:12px;
+}
+
+@media(max-width:768px){
+    .body{
+        position: relative;
+        top:50%;
+        transform: translateY(-50%);
+    }
+    .body .post textarea,.body .post input{
+        font-size:13px;
+    }
+}

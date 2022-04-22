@@ -1,0 +1,73 @@
+.drop{
+    position:fixed;
+    top:136px;
+    left:0;
+    width:100%;
+    height:100%;
+    background-color: rgba(0,0,0,.7);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 5;
+}
+
+.drop.active{
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.drop .holder{
+    position:relative;
+    display: flex;
+    justify-content: space-between;
+    align-items:center;
+    background-color: var(--main-background);
+    padding:25px 40px;
+    transition: .7s all;
+}
+
+.drop .holder{
+    top:-80px;
+}
+
+.drop .holder.active{
+    top:0;
+}
+
+.drop .holder .list{
+    width:80%
+}
+
+.drop .holder .list ul li{
+    display:inline-block;
+    margin-right:25px;
+    margin-bottom:25px;
+    cursor: pointer;
+    border:1px solid var(--main-border-color);
+    border-radius:25px;
+    padding:10px 20px;
+    font-size:14px;
+    text-transform: capitalize;
+}
+
+.drop .holder .list ul li:hover{
+    font-weight:500;
+}
+
+.drop .holder .close{
+    border-radius: 50%;
+    width:44px;
+    height:44px;
+    background-color:black;
+    color:white;
+    text-align: center;
+    cursor: pointer;
+    position: relative;
+}
+
+.drop .holder .close svg{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    font-size:20px;
+}

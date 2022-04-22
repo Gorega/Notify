@@ -1,0 +1,285 @@
+.nav{
+    height:auto;
+    width:100%;
+    background-color: var(--main-background);
+    color:var(--main-font-color);
+    position: fixed;
+    z-index: 5;
+}
+
+.nav .head{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position:relative;
+}
+
+.nav .head::after,.nav .footer::after{
+    content:"";
+    position:absolute;
+    bottom:0px;
+    left:0;
+    width:100%;
+    height:1px;
+    background-color:var(--main-border-color);
+}
+
+.nav .head .sec > ul li,.nav .footer > ul li{
+    display: inline-block;
+    font-size:15px;
+    position: relative;
+    padding:25px 40px;
+    cursor: pointer;
+}
+
+.nav svg{
+    font-size:16px;
+    margin-right:10px;
+}
+
+.nav .footer ul li svg{
+    font-size:12px;
+    margin-bottom:3px;
+}
+.nav .head .sec span{
+    font-family:serif;
+    font-weight:550;
+    font-size:13px;
+    cursor:pointer;
+    margin-right:25px;
+}
+
+.nav .head .sec .account{
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    padding:10px 50px;
+    cursor: pointer;
+}
+
+.nav .head .sec .account > span{
+    font-size:14px;
+    margin-right:10px;
+    text-transform: capitalize;
+}
+
+.nav .head .sec .account img{
+    width:38px;
+    height:38px;
+    border:1px solid var(--main-border-color);
+    border-radius: 50%;
+}
+
+
+.nav .head .account .accountSlide{
+    position: absolute;
+    top:50px;
+    left:-100px;
+    width:250px;
+    height:auto;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    z-index: 5;
+    background-color: var(--main-background);
+    opacity: 0;
+    pointer-events: none;
+    transition: .5s all;
+}
+
+.nav .head .account .accountSlide.active{
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.nav .head .sec ul li:hover,.nav .footer ul li:hover{
+    font-weight: bold;
+}
+
+.nav .head .sec ul li::after,.nav .footer ul li::after{
+    content:"";
+    position:absolute;
+    top:0;
+    right:0px;
+    width:1px;
+    height:100%;
+    background-color:var(--main-border-color);
+}
+
+.nav .head .sec ul li:nth-last-of-type(1)::after,.nav .footer ul li:nth-of-type(3)::after{
+    display: none;
+    }
+
+.nav .head .sec h2{
+    color:var(--main-font-color);
+    font-size:30px;
+    font-weight:bold;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    cursor: pointer;
+}
+
+.nav .head .sec .loginButton{
+    border: 2px solid var(--main-border-color);
+    padding:11px 35px;
+    border-radius: 2px;
+}
+
+
+.nav .footer{
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav .footer .addPost{
+    margin-right:30px;
+    font-size:15px;
+    font-weight:500;
+    cursor: pointer;
+    border:1px solid var(--main-border-color);
+    border-radius: 25px;
+    padding:10px 35px;
+}
+
+.nav .searchBar{
+    display: inline-flex;
+    position: absolute;
+    top:0;
+    left:0;
+    width:100vw;
+    height:99%;
+    z-index: 4;
+    opacity: 0;
+    pointer-events: none;
+    transition:.3s all;
+    color:var(--main-font-color)
+}
+
+.nav .searchBar.active{
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.nav .searchBar input{
+    width:100%;
+    height:100%;
+    border:none;
+    background-color: var(--main-background);
+    padding-left:40px;
+    color:var(--main-font-color);
+}
+
+.nav .searchBar input:focus{
+    outline:none;
+}
+
+.nav .searchBar .results{
+    background-color: var(--main-background);
+    position: absolute;
+    top:60px;
+    left:0;
+    width:86%;
+    height:max-content;
+    padding:15px 10px;
+    display: none;
+    z-index: 40;
+    overflow: hidden;
+}
+
+.nav .searchBar .results.active{
+    display: block;
+}
+
+.nav .searchBar .results ul li{
+    display: block;
+    border-bottom: 1px solid var(--main-border-color);
+    padding:15px;
+    font-size:13px;
+    width: 100%;
+}
+
+.nav .searchBar .results ul li svg{
+    font-size:10px;
+}
+
+.nav .searchBar .results ul li:hover{
+    font-weight: bold;
+    color:#49C5B6
+}
+
+.nav .searchBar .results ul span{
+    display: block;
+    padding:15px;
+    font-size:15px;
+    cursor:auto;
+}
+
+.nav button{
+    position: absolute;
+    z-index: 4;
+    right:0;
+    top:0;
+    height:68px;
+    background-color: black;
+    border:none;
+    padding:25px 30px;
+    color:var(--alt-font-color);
+    text-align: center;
+    cursor: pointer;
+}
+
+.nav .searchBar button svg{
+    font-size:25px;
+}
+
+@media (max-width:992px){
+
+    .nav .head .sec:last-of-type{
+        display:none;
+    }
+
+    .nav .head .sec h2{
+        position: absolute;
+        left:50%;
+        font-size:25px;
+        top:17px;
+        transform:translateX(-50%)
+    }
+
+    .nav .head .sec > ul li,.nav .footer > ul li{
+        padding:25px 10px
+    }
+
+    .nav .head .sec ul li:first-of-type{
+        padding:25px 22px;
+    }
+
+    .nav .head .sec ul li:first-of-type span{
+        display: none;
+    }
+
+    .nav .head .sec:first-of-type ul li:nth-last-of-type(1){
+        position: absolute;
+        right:0;
+    }
+
+    .nav .searchBar{
+        position:fixed;
+        top:0;
+        left:0;
+        width:100%;
+        height:60px;
+    }
+
+    .nav .footer{
+        display: none;
+    }
+    
+    .nav .footer .addPost{
+        position:absolute;
+        right:0;
+        top:43px;
+        font-size:12px;
+        padding:10px 22px;
+    }
+
+}
