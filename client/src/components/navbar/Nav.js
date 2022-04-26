@@ -18,7 +18,7 @@ import UserMenu from "./UserMenu";
 
 function Nav(){
 
-    const {userId,fetchUserData,user} = useContext(AppContext);
+    const {signedUser,fetchUserData,user} = useContext(AppContext);
     const [showSearchBar,setShowSearchBar] = useState(false);
     const [showAccountMenu,setShowAccountMenu] = useState(false);
     const [searchResults,setSearchResults] = useState([]);
@@ -86,7 +86,7 @@ return <>
     </div>
 
     <div className={styles.sec}>
-        {userId ?
+        {signedUser ?
         <div className={styles.account} onMouseOver={()=> setShowAccountMenu(true)} onMouseLeave={()=> setShowAccountMenu(false)}>
             <span>{user.username}</span>
             <img src={user.prfile_img} alt="" />
@@ -103,7 +103,7 @@ return <>
             <li onClick={()=> dispatch(setShowDropDownModel(!showDropDownModel))}>Catagories <FontAwesomeIcon icon={faSortDown} /></li>
             <li>Tags <FontAwesomeIcon icon={faSortDown} /></li>
         </ul>
-        {userId &&  <div className={styles.addPost} onClick={()=> dispatch(setShowPostModel(true))}>
+        {signedUser &&  <div className={styles.addPost} onClick={()=> dispatch(setShowPostModel(true))}>
             Create Blog
         </div>}
     </div>

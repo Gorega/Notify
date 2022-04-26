@@ -14,9 +14,7 @@ function AccountSettings({title,fields,style,innderData,gridForm}){
     const submitForm = ()=>{
         setLoading(true)
         setError(null)
-        axios.patch(`${server}/api/v1/user`,{...innderData},{headers:{
-            authorization:`Bearer ${JSON.parse(localStorage.getItem("auth.message")).token}`
-        },withCredentials:true})
+        axios.patch(`${server}/api/v1/user`,{...innderData},{withCredentials:true})
         .then(res =>  {
             setLoading(false)
             setError(null)

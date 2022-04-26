@@ -26,7 +26,7 @@ const forgetPass = async (req,res)=>{
           return res.status(422).json({msg:"Please provide a valid email address"})
         }
         const user =  await User.findOne({email:to});
-        const ResetPassLinkToken = JWT.sign({email:to},process.env.JWT_SECRET_CODE,{expiresIn:"15m"});
+        const ResetPassLinkToken = JWT.sign({email:to},process.env.JWT_SECRET_CODE,{expiresIn:"1h"});
         if(!user){
             return res.status(404).json({msg:"Email provided not exist"});
         }

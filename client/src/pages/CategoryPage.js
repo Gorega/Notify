@@ -5,7 +5,7 @@ import Card from "../components/body/Card";
 import { useParams } from "react-router-dom";
 
 function CategoryPage(){
-    const {data,userId} = useContext(AppContext);
+    const {data,signedUser,user} = useContext(AppContext);
     const {name} = useParams();
     const [innerData,setInnerData] = useState([])
 
@@ -20,8 +20,8 @@ return <div className={styles.category}>
             {name}
             <div className={styles.cardsHolder}>
                 {innerData.map((card,index)=>{
-                    const {username,prfile_img} = card.user[0];
-                    return <Card key={index} {...card} username={username} prfile_img={prfile_img} editPost={(userId && card.createdBy == userId)} />
+                    const {username,prfile_img,_id} = card.user[0];
+                    return <Card key={index} {...card} username={username} prfile_img={prfile_img} editPost={(signedUser && card.createdBy == user._id)} userId={_id} />
                 })}
             </div>
         </section>

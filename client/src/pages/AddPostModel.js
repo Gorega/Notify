@@ -17,9 +17,7 @@ function AddPostModel(){
 
     const addPostHandler = ()=>{
             dispatch(setPostModelError(null))
-            axios.post(`${server}/api/v1/posts`,{title:postTitle,img:uploadedFile,category:selectValue,description:postValue,poster:uploadedFile},{headers:{
-                authorization:`Bearer ${JSON.parse(localStorage.getItem("auth.message")).token}`
-            },withCredentials:true})
+            axios.post(`${server}/api/v1/posts`,{title:postTitle,img:uploadedFile,category:selectValue,description:postValue,poster:uploadedFile},{withCredentials:true})
             .then(res => {
                 window.location.reload();
             })

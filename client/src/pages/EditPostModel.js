@@ -16,9 +16,7 @@ function EditPostModel(){
     const {upload,loading,uploadedFile,doneUploading,deleteUplaodedFile,setDoneUploading} = useUpload();
 
     const getPostData = async()=>{
-        const response = await axios.get(`${server}/api/v1/post/${postId}`,{headers:{
-            authorization:`Bearer ${JSON.parse(localStorage.getItem("auth.message")).token}`
-        },withCredentials:true});
+        const response = await axios.get(`${server}/api/v1/post/${postId}`,{withCredentials:true});
         const data = await response.data[0];
         setPostValue(data.description)
         setPostTitle(data.title)
@@ -28,9 +26,13 @@ function EditPostModel(){
 
     const editPostHandler = ()=>{
         if(doneUploading){
-            axios.patch(`${server}/api/v1/post/${postId}`,{title:postTitle,img:uploadedFile ? uploadedFile : image,category:selectValue,description:postValue,poster:uploadedFile !== null ? uploadedFile : image},{headers:{
-                authorization:`Bearer ${JSON.parse(localStorage.getItem("auth.message")).token}`
-            },withCredentials:true})
+            axios.patch(`${server}/api/v1/post/${postId}`,{
+                title:postTitle,
+                img:uploadedFile ? uploadedFile : image,
+                category:selectValue,
+                description:postValue,
+                poster:uploadedFile !== null ? uploadedFile : image}
+                ,{withCredentials:true})
             .then(res => {
                 window.location.reload();
             })

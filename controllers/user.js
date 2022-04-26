@@ -56,11 +56,15 @@ const login = async (req,res)=>{
             return res.status(500).json({msg:"Unfound email address"})
         }
         // create token
-        const token = JWT.sign({userId:user._id,userEmail:user.email,username:user.username},process.env.JWT_SECRET_CODE);
+        const token = JWT.sign({userId:user._id,userEmail:user.email,username:user.username},process.env.JWT_SECRET_CODE,{expiresIn:process.env.JWT_EXPIRE});
         // set cookie
         res.cookie("token",token,{
             httpOnly:true,
             useCredentials: false,
+            maxAge: 1000 * 3600 * 24 * 30 * 1
+        })
+        res.cookie("signed",true,{
+            maxAge: 1000 * 3600 * 24 * 30 * 1
         })
 
         return res.status(200).json({msg:"success",userId:user._id,token});
@@ -73,6 +77,7 @@ const login = async (req,res)=>{
 const logOut = (req,res)=>{
     try{
         res.clearCookie("token");
+        res.clearCookie("signed");
         return res.status(200).json({msg:"user Logged out"});
     }catch(err){
         return res.status(500).json({msg:"Error"})
@@ -82,7 +87,7 @@ const logOut = (req,res)=>{
 const user = async (req,res)=>{
     const {userId} = req.user;
     try{
-        const user = await User.findOne({_id:userId})
+        const user = await User.findOne({_id:userId},{password:0,confirmPassword:0})
         return res.status(200).json({user});
     }catch(err){
         return res.status(500).json(err);
@@ -92,10 +97,10 @@ const user = async (req,res)=>{
 const updateUserInfo = async (req,res)=>{
     const {userId} = req.user;
     try{
-        const user = await User.findOneAndUpdate({_id:userId},{...req.body},{
+        await User.findOneAndUpdate({_id:userId},{...req.body},{
             new:true
         })
-        return res.status(200).json({user});
+        return res.status(200).json({msg:"Updated successfuly"});
     }catch(err){
         return res.status(500).json(err);
     }

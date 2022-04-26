@@ -13,9 +13,7 @@ function ProfileImg(){
     const {upload,loading,deleteUplaodedFile,uploadedFile} = useUpload();
 
     const saveProfileImage = ()=>{
-        axios.patch(`${server}/api/v1/user`,{prfile_img:uploadedFile},{headers:{
-            authorization:`Bearer ${JSON.parse(localStorage.getItem("auth.message")).token}`
-        },withCredentials:true})
+        axios.patch(`${server}/api/v1/user`,{prfile_img:uploadedFile},{withCredentials:true})
         .then(res => {
             window.location.reload();
         })

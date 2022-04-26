@@ -30,7 +30,6 @@ function Login(){
             setError({status:false})
             setSuccess(true)
             window.location.reload();
-            window.localStorage.setItem("auth.message",JSON.stringify({token:res.data.token,userId:res.data.userId}));
         })
         .catch(err => {
             setLoading(false)

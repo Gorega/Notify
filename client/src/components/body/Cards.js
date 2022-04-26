@@ -6,7 +6,7 @@ import {setShowPostModel} from "../../features/modelsSlice";
 import { AppContext } from "../../ContextApi";
 
 function Cards(){
-    const {fetchPostsData,data,catagories,userId} = useContext(AppContext);
+    const {fetchPostsData,data,catagories,signedUser} = useContext(AppContext);
     const dispatch = useDispatch();
 
     useEffect(()=>{
@@ -17,13 +17,13 @@ return <div className={styles.cards}>
     <div className="container">
         <section>
             Blogs of the day
-            {userId && <div className={styles.addPost}  onClick={()=> dispatch(setShowPostModel(true))}>
+            {signedUser && <div className={styles.addPost}  onClick={()=> dispatch(setShowPostModel(true))}>
                 +
             </div>}
             <div className={styles.cardsHolder}>
                 {data.slice(0,4).map((card,index)=>{
                     const {username,prfile_img,_id} = card.user[0];
-                    return <Card key={index} {...card} username={username} prfile_img={prfile_img} userId={_id} editPost={(userId && card.createdBy == userId)} />
+                    return <Card key={index} {...card} username={username} prfile_img={prfile_img} userId={_id} editPost={(signedUser && card.createdBy == "")} />
                 })}
             </div>
         </section>
@@ -34,7 +34,7 @@ return <div className={styles.cards}>
                 <div className={styles.cardsHolder}>
                 {data.filter((item)=> item.category.toLowerCase() === section.toLowerCase()).slice(0,4).map((card,index)=>{
                     const {username,prfile_img,_id} = card.user[0];
-                    return <Card key={index} {...card} username={username} prfile_img={prfile_img} userId={_id} editPost={(userId && card.createdBy == userId)} />
+                    return <Card key={index} {...card} username={username} prfile_img={prfile_img} userId={_id} editPost={(signedUser && card.createdBy == "")} />
                 })}
             </div>
             </section>

@@ -13,7 +13,7 @@ function BlogPage(){
     const Navigate = useNavigate();
     const [commentValue,setCommentValue] = useState(null);
     const [data,setData] = useState([]);
-    const {user,userId} = useContext(AppContext);
+    const {user,signedUser} = useContext(AppContext);
     const [comments,setComments] = useState([]);
     const [showComments,setShowComments] = useState(false);
     const dispatch = useDispatch();
@@ -36,10 +36,8 @@ function BlogPage(){
 
     const addCommentHandler = (e)=>{
         e.preventDefault();
-        if(userId){
-            axios.post(`${server}/api/v1/comments`,{content:commentValue,post_id:id},{headers:{
-                authorization:`Bearer ${JSON.parse(localStorage.getItem("auth.message")).token}`
-            },withCredentials:true})
+        if(signedUser){
+            axios.post(`${server}/api/v1/comments`,{content:commentValue,post_id:id},{withCredentials:true})
             .then(res => {
                 setCommentValue("");
             })
@@ -72,8 +70,8 @@ return <div className={styles.blog}>
             
             <div className={styles.comments}>
                 <h2>{comments.length} Comments</h2>
-                <div className={styles.write} onClick={()=> userId || dispatch(setShowLoginModel(true))}>
-                    <img src={userId ? user.prfile_img : "https://www.pngitem.com/pimgs/m/150-1503945_transparent-user-png-default-user-image-png-png.png"} alt=""/>
+                <div className={styles.write} onClick={()=> signedUser || dispatch(setShowLoginModel(true))}>
+                    <img src={signedUser ? user.prfile_img : "https://www.pngitem.com/pimgs/m/150-1503945_transparent-user-png-default-user-image-png-png.png"} alt=""/>
                     <form onSubmit={addCommentHandler}>
                         <input type="text" placeholder="Write a comment..." value={commentValue} onChange={(e)=> setCommentValue(e.target.value)} />
                         <button>Add</button>

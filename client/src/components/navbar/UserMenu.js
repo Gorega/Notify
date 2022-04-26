@@ -9,14 +9,11 @@ import { AppContext } from "../../ContextApi";
 
 function UserMenu({classes}){
 
-    const {userId} = useContext(AppContext);
+    const {user} = useContext(AppContext);
 
     const logoutHandler =()=>{
-        axios.get(`${server}/api/v1/logout`,{headers:{
-            authorization:`Bearer ${JSON.parse(localStorage.getItem("auth.message")).token}`
-        },withCredentials:true})
+        axios.get(`${server}/api/v1/logout`,{withCredentials:true})
         .then(res => {
-            localStorage.removeItem("auth.message");
             window.location.replace("/");
         })
         .catch(err =>console.log(err));
@@ -26,7 +23,7 @@ function UserMenu({classes}){
 return <div className={classes ? styles.smallUserMenu : styles.userMenu}>
     <div className={styles.opt}>
         <ul>
-            <Link to={`/profile/${userId}`}><li>Profile</li></Link>
+            <Link to={`/profile/${user._id}`}><li>Profile</li></Link>
             <Link to="/saved"><li>Saved Blogs</li></Link>
             <li>Notifications</li>
         </ul>

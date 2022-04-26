@@ -10,7 +10,7 @@ import { AppContext } from "../../ContextApi";
 import UserMenu from "./UserMenu";
 
 function SideList(){
-    const {userId,user} = useContext(AppContext);
+    const {signedUser,user} = useContext(AppContext);
     const [showUserMenu,setShowUserMenu] = useState(false);
     const {showSideListModel} = useSelector((state)=> state.models)
     const dispatch = useDispatch();
@@ -40,7 +40,10 @@ function SideList(){
     }
 
     const activateDarkTheme = ()=>{
-       return (localStorage.getItem("theme") === "light" || !localStorage.getItem("theme")) ? <div className={styles.toggle}>Enable Dark Mode <Switch onChange={activateDarkThemeHandler} /> </div> : <div className={styles.toggle}>Activate White Option <Switch onChange={deactivateDarkThemeHandler} defaultChecked /> </div>
+       return (localStorage.getItem("theme") === "light" || !localStorage.getItem("theme"))
+        ? <div className={styles.toggle}>Enable Dark Mode <Switch onChange={activateDarkThemeHandler} /> </div>
+         :
+        <div className={styles.toggle}>Activate White Option <Switch onChange={deactivateDarkThemeHandler} defaultChecked /> </div>
     }
 
     const closeShowSide = ()=>{
@@ -73,7 +76,7 @@ return <div className={`${styles.main} ${showSideListModel && styles.active}`}>
         <div className={styles.options}>
             <ul>
                 <li>
-                {userId ? 
+                {signedUser ? 
                 <div className={styles.user}>
                     <div className={styles.head} onClick={()=> setShowUserMenu(!showUserMenu)}>
                         <div className={styles.profileImg}>

@@ -4,6 +4,6 @@ import { AppContext } from "./ContextApi"
 
 
 export function ProtectedRoutes(){
-    const {userId} = useContext(AppContext);
-    return userId ? <Outlet /> : window.location.replace("/")
+    const {signedUser} = useContext(AppContext);
+    return signedUser ? <Outlet /> : window.location.replace("/")
 }

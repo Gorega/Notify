@@ -38,9 +38,7 @@ function PasswordModel(){
         setLoading(true)
         setError(null)
         e.preventDefault();
-        axios.patch(`${server}/api/v1/user/update/pass`,{currentPassword:currentPass,password:newPass,confirmPassword:confirmPass},{headers:{
-            authorization:`Bearer ${JSON.parse(localStorage.getItem("auth.message")).token}`
-        },withCredentials:true})
+        axios.patch(`${server}/api/v1/user/update/pass`,{currentPassword:currentPass,password:newPass,confirmPassword:confirmPass},{withCredentials:true})
         .then(res => {
             setLoading(false)
             setError(null)

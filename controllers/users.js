@@ -15,7 +15,6 @@ const getUser = async(req,res)=>{
     const {userId} = req.params;
     try{
         const User = await user.findOne({_id:userId}).select(`-password -confirmPassword`)
-        console.log(User)
         return res.status(200).json({User})
     }catch(err){
         return res.status(500).json({msg:"Error"})

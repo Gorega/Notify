@@ -14,18 +14,17 @@ import {savePost,deleteSavedPost} from "../../features/userListSlice";
 function Card({_id,img,title,category,prfile_img,username,userId,editPost}){
 
     const Navigate = useNavigate();
-    const {setData,isPostSaved} = useContext(AppContext);
+    const {setData,isPostSaved,signedUser} = useContext(AppContext);
     const [patchMsg,setPatchMsg] = useState(false);
     const [showuserExpand,setShowUserExpand] = useState(false);
-    const user = localStorage.getItem("auth.message") ? JSON.parse(localStorage.getItem("auth.message")).userId : null;
     const dispatch = useDispatch();
 
     const savePostHandler = ()=>{
-        if(user){
+        if(signedUser){
             if(isPostSaved(_id)){
-                dispatch(deleteSavedPost(_id,setPatchMsg("Saved blog has been removed")))
+                dispatch(deleteSavedPost(_id))
             }else{
-                dispatch(savePost(_id,setPatchMsg("Blog has sssbeen added to saved list")))
+                dispatch(savePost(_id))
             }
         }else{
             dispatch(setShowLoginModel(true));
@@ -42,9 +41,7 @@ function Card({_id,img,title,category,prfile_img,username,userId,editPost}){
             const filter = data.filter((post)=> post._id !== id);
             return filter;
         })
-        const response = await axios.delete(`${server}/api/v1/post/${id}`,{headers:{
-            authorization:`Bearer ${JSON.parse(localStorage.getItem("auth.message")).token}`
-        },withCredentials:true});
+        const response = await axios.delete(`${server}/api/v1/post/${id}`,{withCredentials:true});
     }
 
     useEffect(()=>{
