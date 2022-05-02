@@ -30,7 +30,7 @@ passport.use(new GoogleStrategy({
             const newUser = await User.create({googleId:profile.id,email:profile.emails[0].value,username:profile.name.familyName,prfile_img:profile.photos[0].value});
             return done(null,newUser);
         }catch(err){
-            return done("User with the same email and information is already exist")
+            return done(null,false)
         }
     }
     return done(null,user);
@@ -51,7 +51,7 @@ passport.use(new FacebookStrategy({
             return done(null,newUser);
         }
         catch(err){
-            return done("User with the same email and information is already exist")
+            return done(null,false)
         }
     }
     return done(null,user);
@@ -73,8 +73,7 @@ passport.use(new GithubStrategy({
             return done(null,newUser);
         }
         catch(err){
-            console.log(profile)
-            return done("User with the same email and information is already exist")
+            return done(null,false)
         }
     }
     return done(null,user);

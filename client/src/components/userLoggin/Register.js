@@ -4,7 +4,6 @@ import { faFacebook,faGithub,faGoogle } from '@fortawesome/free-brands-svg-icons
 import {faExclamationTriangle,faCheck,faSpinner} from "@fortawesome/free-solid-svg-icons"
 import styles from "../../styles/userLoggin/Register.module.css";
 import { useState } from "react";
-import {useNavigate} from "react-router-dom"
 import axios from "axios";
 import {server} from "../../config";
 import {useDispatch} from "react-redux";
@@ -22,7 +21,6 @@ function Register(){
         status:false,
         msg:""
     })
-    const Navigate = useNavigate();
     const dispatch = useDispatch();
 
     const registerHandler = (e)=>{
@@ -60,9 +58,9 @@ return <Layout model={true}>
     </div>
     <div className={styles.brands}>
         <ul>
-            <li onClick={()=> Navigate(`/auth/google`)}><FontAwesomeIcon icon={faGoogle} /> Google</li>
-            <li onClick={()=> Navigate(`/auth/facebook`)}><FontAwesomeIcon icon={faFacebook} /> Facebook</li>
-            <li onClick={()=> Navigate(`/auth/github`)}><FontAwesomeIcon icon={faGithub} /> Github</li>
+            <li onClick={()=> location.href(`${server}/auth/google`)}><FontAwesomeIcon icon={faGoogle} /> Google</li>
+            <li onClick={()=> location.href(`${server}/auth/facebook`)}><FontAwesomeIcon icon={faFacebook} /> Facebook</li>
+            <li onClick={()=> location.href(`${server}/auth/github`)}><FontAwesomeIcon icon={faGithub} /> Github</li>
         </ul>
     </div>
 
