@@ -12,7 +12,7 @@ const auth = (req,res,next)=>{
         }
         next();
     }catch(err){
-        return res.status(401).json({msg:"Unautorized"})
+        return res.status(408).json({msg:"Unautorized"})
     }
 }
 

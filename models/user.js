@@ -14,12 +14,13 @@ const userSchema = new mongoose.Schema({
     },
     password:{
         type:String,
-        required:[true,"password should not be embty"]
     },
     confirmPassword:{
         type:String,
-        required:[true,"you must confirm your password"]
     },
+    googleId:String,
+    facebookId:String,
+    githubId:String,
     first_name:String,
     last_name:String,
     intro:String,

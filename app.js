@@ -10,6 +10,7 @@ const postRoute = require("./routes/post");
 const commentRoute = require("./routes/comment");
 const usersRoute = require("./routes/uesrs");
 const resetPassRoute = require("./routes/resetPass");
+const passportRoute = require("./routes/passport");
 
 app.use(express.json());
 const corsOptions = {
@@ -24,6 +25,7 @@ app.use("/",postRoute);
 app.use("/",commentRoute);
 app.use("/",usersRoute);
 app.use("/",resetPassRoute)
+app.use("/auth",passportRoute);
 
 app.use(express.static(path.join(__dirname, "/client/build")));
 app.get('*', (req, res) => {
