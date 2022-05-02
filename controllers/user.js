@@ -7,22 +7,22 @@ const register = async (req,res) =>{
 
     try{
         if(!username){
-            return res.status(500).json({msg:"Username should not be empty"})
+            return res.status(422).json({msg:"Username should not be empty"})
         }
         if(!email){
-            return res.status(500).json({msg:"Email address should not be empty"})
+            return res.status(422).json({msg:"Email address should not be empty"})
         }
         if(!password){
-            return res.status(500).json({msg:"Password should not be empty"})
+            return res.status(422).json({msg:"Password should not be empty"})
         }
         if(!confirmPassword){
-            return res.status(500).json({msg:"Please verify your password"})
+            return res.status(422).json({msg:"Please verify your password"})
         }
         if(password !== confirmPassword){
-            return res.status(500).json({msg:"password don't match"})
+            return res.status(422).json({msg:"password don't match"})
         }
         if(terms !== true){
-            return res.status(500).json({msg:"You should accept Terms and Conditions"})
+            return res.status(422).json({msg:"You should accept Terms and Conditions"})
         }
 
         // hash password
@@ -50,10 +50,10 @@ const login = async (req,res)=>{
         const comparedPass = await bcrypt.compare(password,user.password)
         password = comparedPass;
         if(!password || !email){
-            return res.status(500).json({msg:"Incorrect email or password"})
+            return res.status(422).json({msg:"Incorrect email or password"})
         }
         if(email !== user.email){
-            return res.status(500).json({msg:"Unfound email address"})
+            return res.status(422).json({msg:"Unfound email address"})
         }
         // create token
         const token = JWT.sign({userId:user._id,userEmail:user.email,username:user.username},process.env.JWT_SECRET_CODE,{expiresIn:process.env.JWT_EXPIRE});
@@ -110,21 +110,20 @@ const updateUserPassword = async (req,res)=>{
     const {userId} = req.user;
     let {currentPassword,password,confirmPassword} = req.body;
     try{
-
+        if(!currentPassword){
+            return res.status(422).json({msg:"Invalid current password"})
+        }
         // compare current password with old password
         const OldUser = await User.findOne({_id:userId});
         const comparePassword = await bcrypt.compare(currentPassword,OldUser.password);
         currentPassword = comparePassword;
-        if(!currentPassword){
-            return res.status(404).json({msg:"Invalid current password"})
-        }
 
         // validate new password
         if(!password || password.length < 8){
-            return res.status(404).json({msg:"password should be more stonger"})
+            return res.status(422).json({msg:"password should be more stonger"})
         }
         if(password !== confirmPassword){
-            return res.status(404).json({msg:"no match passwords"})
+            return res.status(422).json({msg:"no match passwords"})
         }
         const hashPassword = await bcrypt.hash(password,10);
         password = hashPassword;
