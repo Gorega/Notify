@@ -1,9 +1,10 @@
 import Layout from "../ModelLayout";
 import styles from "../../styles/userLoggin/Login.module.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faFacebook,faTwitter,faGoogle } from '@fortawesome/free-brands-svg-icons'
+import { faFacebook,faGithub,faGoogle } from '@fortawesome/free-brands-svg-icons'
 import {faExclamationTriangle,faCheck,faSpinner} from "@fortawesome/free-solid-svg-icons"
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { server } from "../../config";
 import {useDispatch} from "react-redux";
@@ -11,6 +12,7 @@ import {setShowLoginModel,setShowRegisterModel,setShowForgetPassModel} from "../
 
 function Login(){
     const dispatch = useDispatch();
+    const Navigate = useNavigate();
     const [email,setEmail] = useState(null);
     const [password,setPassword] = useState(null);
     const [success,setSuccess] = useState(false);
@@ -76,9 +78,9 @@ return <>
             <h2>Or sign in with</h2>
             <div className={styles.brands}>
                 <ul>
-                    <li><FontAwesomeIcon icon={faGoogle} /> Google</li>
-                    <li><FontAwesomeIcon icon={faTwitter} /> Twitter</li>
-                    <li><FontAwesomeIcon icon={faFacebook} /> Facebook</li>
+                    <li onClick={()=> Navigate(`${server}/auth/google`)}><FontAwesomeIcon icon={faGoogle} /> Google</li>
+                    <li onClick={()=> Navigate(`${server}/auth/facebook`)}><FontAwesomeIcon icon={faFacebook} /> Facebook</li>
+                    <li onClick={()=> Navigate(`${server}/auth/github`)}><FontAwesomeIcon icon={faGithub} /> Github</li>
                 </ul>
             </div>
         </div>

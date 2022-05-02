@@ -89,7 +89,7 @@ return <>
         {signedUser ?
         <div className={styles.account} onMouseOver={()=> setShowAccountMenu(true)} onMouseLeave={()=> setShowAccountMenu(false)}>
             <span>{user.username}</span>
-            <img src={user.prfile_img} alt="" />
+            <img src={user.prfile_img} alt="" referrerpolicy="no-referrer" />
             <div className={`${styles.accountSlide} ${showAccountMenu && styles.active}`}>
                 <UserMenu />
             </div>

@@ -29,6 +29,11 @@
     margin-top:25px;
 }
 
+.register .brands ul a{
+    text-decoration: none;
+    background-color: transparent;
+}
+
 .register .brands ul li{
     display: inline-flex;
     margin-right:10px;
@@ -47,11 +52,11 @@
 }
 
 .register .brands ul li:nth-of-type(2){
-    background-color:#1d9bf0;
+    background-color:#046EE5;
 }
 
 .register .brands ul li:nth-of-type(3){
-    background-color:#046EE5;
+    background-color:black;
 }
 
 .register .form{
