@@ -78,9 +78,9 @@ return <>
             <h2>Or sign in with</h2>
             <div className={styles.brands}>
                 <ul>
-                    <li onClick={()=> Navigate(`${server}/auth/google`)}><FontAwesomeIcon icon={faGoogle} /> Google</li>
-                    <li onClick={()=> Navigate(`${server}/auth/facebook`)}><FontAwesomeIcon icon={faFacebook} /> Facebook</li>
-                    <li onClick={()=> Navigate(`${server}/auth/github`)}><FontAwesomeIcon icon={faGithub} /> Github</li>
+                    <li onClick={()=> Navigate(`/auth/google`)}><FontAwesomeIcon icon={faGoogle} /> Google</li>
+                    <li onClick={()=> Navigate(`/auth/facebook`)}><FontAwesomeIcon icon={faFacebook} /> Facebook</li>
+                    <li onClick={()=> Navigate(`/auth/github`)}><FontAwesomeIcon icon={faGithub} /> Github</li>
                 </ul>
             </div>
         </div>
