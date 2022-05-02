@@ -97,4 +97,11 @@ const signUser = (req,res)=>{
     return res.redirect("https://notify-gorega.herokuapp.com")
 }
 
-module.exports = {signUser}
+const failureRedirect = (req,res)=>{
+    setTimeout(()=>{
+        res.redirect("/");
+    },3000)
+    return res.send("User with the same email and information is already exist, please login with different method")
+}
+
+module.exports = {signUser,failureRedirect}

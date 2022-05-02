@@ -52,7 +52,7 @@ function Settings(){
         activeStatus:true,
         disabledStyle:true,
         icon:faEdit,
-        showModel:()=> dispatch(setShowChangePassModel(true)),
+        showModel:(user.googleId || user.faceookId || user.githubId) ? ()=> dispatch(setShowChangePassModel(false)) : ()=> dispatch(setShowChangePassModel(true)),
     }];
 
     const personalInfoFields = [{

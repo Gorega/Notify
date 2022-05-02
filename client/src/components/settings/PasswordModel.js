@@ -2,8 +2,7 @@ import styles from "../../styles/settings/PasswordModel.module.css";
 import InputField from "./InputField";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEye,faTimes,faExclamationTriangle,faSpinner,faCheck } from '@fortawesome/free-solid-svg-icons'
-import { useContext, useEffect, useState } from "react";
-import {AppContext} from "../../ContextApi";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import { server } from "../../config";
 import {useDispatch} from "react-redux";
