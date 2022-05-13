@@ -23,7 +23,7 @@ return <div className={styles.cards}>
             <div className={styles.cardsHolder}>
                 {data.slice(0,4).map((card,index)=>{
                     const {username,prfile_img,_id} = card.user[0];
-                    return <Card key={index} {...card} username={username} prfile_img={prfile_img} userId={_id} editPost={(signedUser && card.createdBy == "")} />
+                    return <Card key={index} {...card} username={username} prfile_img={prfile_img} userId={_id} editPost={(signedUser && card.createdBy == _id)} />
                 })}
             </div>
         </section>
@@ -34,7 +34,7 @@ return <div className={styles.cards}>
                 <div className={styles.cardsHolder}>
                 {data.filter((item)=> item.category.toLowerCase() === section.toLowerCase()).slice(0,4).map((card,index)=>{
                     const {username,prfile_img,_id} = card.user[0];
-                    return <Card key={index} {...card} username={username} prfile_img={prfile_img} userId={_id} editPost={(signedUser && card.createdBy == "")} />
+                    return <Card key={index} {...card} username={username} prfile_img={prfile_img} userId={_id} editPost={(signedUser && card.createdBy == _id)} />
                 })}
             </div>
             </section>
