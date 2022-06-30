@@ -34,6 +34,7 @@
     margin:auto;
     text-align:center;
     cursor: pointer;
+    object-fit: cover;
 }
 
 .main .head h2{

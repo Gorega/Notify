@@ -11,7 +11,7 @@ import CountriesList from "../Country_list.json";
 import ProfileImg from "../components/settings/ProfileImg";
 
 function Settings(){
-    const {user} = useContext(AppContext);
+    const {user,signedUser} = useContext(AppContext);
     const {showChangePassModel} = useSelector((state)=> state.models)
     const dispatch = useDispatch();
     const [switchDom,setSwitchDom] = useState(0);
@@ -52,7 +52,7 @@ function Settings(){
         activeStatus:true,
         disabledStyle:true,
         icon:faEdit,
-        showModel:(user.googleId || user.faceookId || user.githubId) ? ()=> dispatch(setShowChangePassModel(false)) : ()=> dispatch(setShowChangePassModel(true)),
+        showModel: signedUser ? ()=> dispatch(setShowChangePassModel(true)) : ()=> dispatch(setShowChangePassModel(false)),
     }];
 
     const personalInfoFields = [{
@@ -161,6 +161,10 @@ function Settings(){
         }
     },[showChangePassModel])
 
+    useEffect(()=>{
+        console.log(signedUser)
+    },[signedUser])
+
 return <>
 {showChangePassModel && <PasswordModel />}
 <div className={styles.settings}>
@@ -191,7 +195,6 @@ return <>
     </div>
 </div>
 </div>
-
 </>
 
 }
