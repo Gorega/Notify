@@ -18,10 +18,11 @@
 }
 
 .profile .holder .leftSec img{
-    width:230px;
+    width:210px;
     height:200px;
     border-radius: 10px;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    object-fit: cover;
 }
 
 .profile .holder .rightSec{

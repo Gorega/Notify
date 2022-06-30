@@ -64,7 +64,7 @@ return <div className={styles.blog}>
 
         <div className={styles.body}>
             <h2>{data.title}</h2>
-            <pre>BLOG BY <span onClick={()=> Navigate(`/profile/${data.user[0]._id}`)}>{data.user && data.user[0].username}</span> IN <span onClick={()=> Navigate(`/category/${data.category}`)}>{data.category}</span> - DECEMBER 13</pre>
+            <pre>BLOG BY <span onClick={()=> Navigate(`/profile/${data.user[0]._id}`)}>{data.user && data.user[0].username}</span> IN <span onClick={()=> Navigate(`/category/${data.category}`)}>{data.category}</span> - {data.createdAt?.substring(0,10)}</pre>
             <img src={data.poster} alt="" />
             <p>{data.description}</p>
             

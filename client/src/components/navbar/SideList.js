@@ -97,7 +97,7 @@ return <div className={`${styles.main} ${showSideListModel && styles.active}`}>
         </div>
 
         <div className={styles.foot}>
-            {activateDarkTheme()};
+            {activateDarkTheme()}
         </div>
     </div>
 </div>

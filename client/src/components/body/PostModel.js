@@ -10,12 +10,11 @@ function PostModel({headTitle,postTitle,setPostTitle,postValue,postContent,setPo
                     uploadedFile,loading,posterImage,doneUploading}
     ){
 
+    const dispatch = useDispatch();
     const {user,catagories} = useContext(AppContext);
     const placeholder = `Write your blog here, ${user.username}`
     const postModelError = useSelector((state)=> state.postModel.postModelError);
     const postModelPage = useSelector((state)=> state.postModel.postModelPage);
-
-    const dispatch = useDispatch();
 
     const switchDom = ()=>{
         if(postModelPage === 1){

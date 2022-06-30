@@ -10,8 +10,9 @@ import {useDispatch} from "react-redux";
 import {setPostId} from "../../features/postModelSlice";
 import {setEditPostModel, setShowLoginModel} from "../../features/modelsSlice";
 import {savePost,deleteSavedPost} from "../../features/userListSlice";
+import {format} from "timeago.js"
 
-function Card({_id,img,title,category,prfile_img,username,userId,editPost}){
+function Card({_id,img,createdAt,title,category,prfile_img,username,userId,editPost}){
 
     const Navigate = useNavigate();
     const {setData,isPostSaved,signedUser} = useContext(AppContext);
@@ -76,7 +77,7 @@ return <>
                 Added to <span onClick={()=> Navigate(`/category/${category}`)}>{category}</span>
             </div>
             <div className={styles.date}>
-                January 25,2022
+                {format(createdAt)}
             </div>
         </div>
         <div className={styles.by} onClick={()=> Navigate(`/profile/${userId}`)}>

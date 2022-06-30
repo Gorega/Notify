@@ -1,9 +1,9 @@
 import Cards from "../components/body/Cards";
 
 function HomePage(){
-return <>
-<Cards />
-</>
+    return <>
+        <Cards />
+    </>
 
 }
 

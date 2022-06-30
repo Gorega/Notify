@@ -70,6 +70,7 @@
     margin-top:25px;
     width:80%;
     height:70vh;
+    object-fit: cover;
 }
 
 .blog .body > p{

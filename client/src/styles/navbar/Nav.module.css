@@ -68,6 +68,7 @@
     height:38px;
     border:1px solid var(--main-border-color);
     border-radius: 50%;
+    object-fit: cover;
 }
 
 
