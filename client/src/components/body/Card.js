@@ -15,7 +15,7 @@ import {format} from "timeago.js"
 function Card({_id,img,createdAt,title,category,prfile_img,username,userId,editPost}){
 
     const Navigate = useNavigate();
-    const {setData,isPostSaved,signedUser} = useContext(AppContext);
+    const {setData,isPostSaved,signedUser,user} = useContext(AppContext);
     const [patchMsg,setPatchMsg] = useState(false);
     const [showuserExpand,setShowUserExpand] = useState(false);
     const dispatch = useDispatch();
