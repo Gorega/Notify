@@ -8,7 +8,7 @@ import ProfilePage from "./pages/ProfilePage";
 import Settings from "./pages/Settings";
 import SavedList from "./pages/SavedList";
 import NotFound from "./pages/404";
-import AddPostModel from "./pages/AddPostModel";
+import AddPostModal from "./pages/AddPostModal";
 import ResetPass from "./components/userLoggin/ResetPass";
 
 function App() {  
@@ -27,7 +27,7 @@ function App() {
     <Route path={`/reset/pass/:token`} element={<ResetPass />} />
     <Route path="*" element={<NotFound />} />
   </Routes>
-  <AddPostModel />
+  <AddPostModal />
   </BrowserRouter>
   </>
 }

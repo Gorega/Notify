@@ -7,17 +7,16 @@ import axios from "axios";
 import { server } from "../../config";
 import {useUpload} from "../../lib/useUpload";
 
-function ProfileImg(){
+function AvararUploader(){
 
     const {user} = useContext(AppContext);
     const {upload,loading,deleteUplaodedFile,uploadedFile} = useUpload();
 
     const saveProfileImage = ()=>{
         axios.patch(`${server}/api/v1/user`,{prfile_img:uploadedFile},{withCredentials:true})
-        .then(res => {
+        .then(_ => {
             window.location.reload();
         })
-        .catch(err => console.log(err))        
     }
 
 return   <div className={styles.image}>
@@ -35,4 +34,4 @@ return   <div className={styles.image}>
 
 }
 
-export default ProfileImg;
+export default AvararUploader;

@@ -1,13 +1,13 @@
-import Layout from "../ModelLayout";
+import Layout from "../ModalLayout";
 import styles from "../../styles/userLoggin/Login.module.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFacebook,faGithub,faGoogle } from '@fortawesome/free-brands-svg-icons'
-import {faExclamationTriangle,faCheck,faSpinner} from "@fortawesome/free-solid-svg-icons"
+import {faExclamationTriangle} from "@fortawesome/free-solid-svg-icons"
 import { useState } from "react";
 import axios from "axios";
 import { server } from "../../config";
 import {useDispatch} from "react-redux";
-import {setShowLoginModel,setShowRegisterModel,setShowForgetPassModel} from "../../features/modelsSlice";
+import {setShowLoginModal,setShowRegisterModal,setShowForgetPassModal} from "../../features/displaySlice";
 
 function Login(){
     const dispatch = useDispatch();
@@ -39,13 +39,13 @@ function Login(){
     }
 
 return <>
-<Layout model={true}>
+<Layout modal={true}>
     <div className={styles.login}>
         <div className={styles.head}>
             <h2>Sign in to continue</h2>
             <span>Not a member yet? <span onClick={()=> {
-                dispatch(setShowLoginModel(false));
-                dispatch(setShowRegisterModel(true));
+                dispatch(setShowLoginModal(false));
+                dispatch(setShowRegisterModal(true));
             }}>Register now</span></span>
         </div>
         <form onSubmit={loginHandler}>
@@ -66,9 +66,9 @@ return <>
             </div>}
             <button>LOGIN NOW</button>
             <span onClick={()=>{
-                dispatch(setShowRegisterModel(false));
-                dispatch(setShowLoginModel(false));
-                dispatch(setShowForgetPassModel(true));
+                dispatch(setShowRegisterModal(false));
+                dispatch(setShowLoginModal(false));
+                dispatch(setShowForgetPassModal(true));
             }}>Forget you password</span>
         </form>
 

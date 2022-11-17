@@ -19,7 +19,7 @@ const getComments = async (req,res)=>{
         }]);
         return res.status(201).json({comments});
     }catch(err){
-        console.log(err)
+        return res.status(500).json({msg:"Error"})
     }
 }
 
@@ -30,7 +30,7 @@ try{
     const comments = await Comments.create({content,post_id,createdBy:userId})
     return res.status(201).json({comments});
 }catch(err){
-    console.log(err)
+    return res.status(500).json({msg:"Error"})
 }
 }
 

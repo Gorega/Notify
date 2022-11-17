@@ -9,9 +9,9 @@ export const AppContext = React.createContext();
 
 const AppProvider = (props)=>{
     const [user,setUser] = useState([]);
-    const [data,setData] = useState([]);
-    const set = new Set(data?.map((item)=> item.category.toLowerCase()))
-    const catagories = Array.from(set);
+    const [posts,setPosts] = useState([]);
+    const catagoriesSet = new Set(posts?.map((item)=> item.category.toLowerCase()))
+    const catagories = Array.from(catagoriesSet);
     const [userList,setUserList] = useState([]);
     const {savePost,deleteSavedPost} = useSelector((state)=> state.userList);
     const signedUser = Cookies.get("signed");
@@ -35,12 +35,17 @@ const AppProvider = (props)=>{
     const fetchPostsData = async ()=>{
         const response = await axios.get(`${server}/api/v1/posts`,{withCredentials:true});
         const data = await response.data;
-        setData(data.Posts)
+        setPosts(data.Posts)
     }
 
     useEffect(()=>{
         if(signedUser){
             fetchUserData()
+        }
+    },[])
+
+    useEffect(()=>{
+        if(signedUser){
             getSavedPosts()
         }
     },[savePost,deleteSavedPost])
@@ -48,7 +53,7 @@ const AppProvider = (props)=>{
     return <AppContext.Provider value={{
         user,
         signedUser,
-        data,setData,
+        posts,setPosts,
         catagories,
         fetchPostsData,
         userList,

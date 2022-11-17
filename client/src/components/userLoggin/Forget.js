@@ -1,7 +1,7 @@
-import Layout from "../ModelLayout";
+import Layout from "../ModalLayout";
 import styles from "../../styles/userLoggin/Forget.module.css";
 import {useDispatch} from "react-redux";
-import {setShowLoginModel,setShowForgetPassModel} from "../../features/modelsSlice";
+import {setShowLoginModal,setShowForgetPassModal} from "../../features/displaySlice";
 import axios from "axios";
 import { useState } from "react";
 import {server} from "../../config";
@@ -19,7 +19,7 @@ function Forget(){
         e.preventDefault();
         setLoading(true)
         setError({status:false})
-        axios.post(`${server}/api/v1/user/forget`,{to:value})
+        axios.post(`${server}/api/v1/user/forget`,{to:value},{withCredentials:true})
         .then(res => {
             setLoading(false)
             setSuccess({status:true,msg:"A link to reset your password has been sent to your email"})
@@ -27,11 +27,10 @@ function Forget(){
         .catch(err => {
             setLoading(false)
             setError({status:true,msg:err.response.data.msg})
-            console.log(err)
         });
     }
 
-return <Layout model={true}>
+return <Layout modal={true}>
     <div className={styles.forget}>
         <h2>Forget you password</h2>
         <p>Enter your username or email address and we will send you a link to reset your password.</p>
@@ -43,8 +42,8 @@ return <Layout model={true}>
         </form>
 
         <span onClick={()=>{
-            dispatch(setShowForgetPassModel(false))
-            dispatch(setShowLoginModel(true))
+            dispatch(setShowForgetPassModal(false))
+            dispatch(setShowLoginModal(true))
         }} >Back</span>
     </div>
 

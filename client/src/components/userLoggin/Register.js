@@ -1,4 +1,4 @@
-import Layout from "../ModelLayout";
+import Layout from "../ModalLayout";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFacebook,faGithub,faGoogle } from '@fortawesome/free-brands-svg-icons'
 import {faExclamationTriangle,faCheck,faSpinner} from "@fortawesome/free-solid-svg-icons"
@@ -7,9 +7,10 @@ import { useState } from "react";
 import axios from "axios";
 import {server} from "../../config";
 import {useDispatch} from "react-redux";
-import {setShowLoginModel,setShowRegisterModel} from "../../features/modelsSlice";
+import {setShowLoginModal,setShowRegisterModal} from "../../features/displaySlice";
 
 function Register(){
+    const dispatch = useDispatch();
     const [username,setUsername] = useState(null);
     const [email,setEmail] = useState(null);
     const [password,setPassword] = useState(null);
@@ -21,20 +22,19 @@ function Register(){
         status:false,
         msg:""
     })
-    const dispatch = useDispatch();
 
     const registerHandler = (e)=>{
         setLoading(true)
         setError({status:false})
         e.preventDefault();
-        axios.post(`${server}/api/v1/register`,{username,email,password,confirmPassword,terms})
+        axios.post(`${server}/api/v1/register`,{username,email,password,confirmPassword,terms},{withCredentials:true})
         .then(res => {
             setLoading(false);
             setError({status:false});
             setSuccess(true);
             setTimeout(()=>{
-                dispatch(setShowRegisterModel(false));
-                dispatch(setShowLoginModel(true));
+                dispatch(setShowRegisterModal(false));
+                dispatch(setShowLoginModal(true));
             },1000)
         })
         .catch(err => {
@@ -47,13 +47,13 @@ function Register(){
         })
     }
 
-return <Layout model={true}>
+return <Layout modal={true}>
 <div className={styles.register}>
     <div className={styles.head}>
         <h2>Register with</h2>
         <span>Are you a member? <span onClick={()=> {
-            dispatch(setShowLoginModel(true));
-            dispatch(setShowRegisterModel(false));
+            dispatch(setShowLoginModal(true));
+            dispatch(setShowRegisterModal(false));
         }}>Login now</span></span>
     </div>
     <div className={styles.brands}>

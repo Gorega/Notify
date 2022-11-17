@@ -1,24 +1,24 @@
+import styles from "../../styles/body/Card.module.css";
 import { useState,useContext, useEffect } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSave,faArchive,faTrash,faEdit } from '@fortawesome/free-solid-svg-icons'
 import { useNavigate } from "react-router-dom";
 import { AppContext } from "../../ContextApi";
-import styles from "../../styles/body/Card.module.css";
 import axios from "axios";
 import { server } from "../../config";
 import {useDispatch} from "react-redux";
-import {setPostId} from "../../features/postModelSlice";
-import {setEditPostModel, setShowLoginModel} from "../../features/modelsSlice";
+import {setPostId} from "../../features/createModalSlice";
+import {setEditPostModal, setShowLoginModal} from "../../features/displaySlice";
 import {savePost,deleteSavedPost} from "../../features/userListSlice";
 import {format} from "timeago.js"
 
 function Card({_id,img,createdAt,title,category,prfile_img,username,userId,editPost}){
 
     const Navigate = useNavigate();
-    const {setData,isPostSaved,signedUser,user} = useContext(AppContext);
+    const dispatch = useDispatch();
+    const {setPosts,isPostSaved,signedUser} = useContext(AppContext);
     const [patchMsg,setPatchMsg] = useState(false);
     const [showuserExpand,setShowUserExpand] = useState(false);
-    const dispatch = useDispatch();
 
     const savePostHandler = ()=>{
         if(signedUser){
@@ -28,18 +28,18 @@ function Card({_id,img,createdAt,title,category,prfile_img,username,userId,editP
                 dispatch(savePost(_id))
             }
         }else{
-            dispatch(setShowLoginModel(true));
+            dispatch(setShowLoginModal(true));
         }
     }
 
     const editPostHandler = (id)=>{
         dispatch(setPostId(id))
-        dispatch(setEditPostModel(true));
+        dispatch(setEditPostModal(true));
     }
 
     const removePostHandler = async (id)=>{
-        setData((data)=>{
-            const filter = data.filter((post)=> post._id !== id);
+        setPosts((posts)=>{
+            const filter = posts.filter((post)=> post._id !== id);
             return filter;
         })
         const response = await axios.delete(`${server}/api/v1/post/${id}`,{withCredentials:true});

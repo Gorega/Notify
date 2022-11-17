@@ -11,8 +11,6 @@ export const savePost = createAsyncThunk(
   "saved/savePost",
   async(payload)=>{
     return await axios.post(`${server}/api/v1/user-list`,{saved_post:payload},{withCredentials:true})
-    .then(res => console.log(res))
-    .catch(err => console.log(err))
   }
 )
 
@@ -21,12 +19,8 @@ export const deleteSavedPost = createAsyncThunk(
   "saved/deleteSavedPost",
   async(payload)=>{
     return await axios.delete(`${server}/api/v1/user-list/${payload}`,{withCredentials:true})
-    .then(res => console.log(res))
-    .catch(err => console.log(err));
   }
 )
-
-
 
 export const userListSlice = createSlice({
   name: 'userList',

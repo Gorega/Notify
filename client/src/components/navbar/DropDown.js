@@ -5,32 +5,32 @@ import { useContext,useEffect } from 'react';
 import { AppContext } from '../../ContextApi';
 import { useNavigate } from 'react-router-dom';
 import {useDispatch,useSelector} from "react-redux"
-import {setShowDropDownModel} from "../../features/modelsSlice";
+import {setShowDropDownModal} from "../../features/displaySlice";
 
 function DropDown(){
-    const {fetchPostsData,data,catagories} = useContext(AppContext);
-    const {showDropDownModel} = useSelector((state)=> state.models);
-    const Navigate = useNavigate();
     const dispatch = useDispatch();
+    const Navigate = useNavigate();
+    const {fetchPostsData,posts,catagories} = useContext(AppContext);
+    const {showDropDownModal} = useSelector((state)=> state.display);
 
     useEffect(()=>{
         fetchPostsData();
     },[])
 
-return <div className={`${styles.drop} ${showDropDownModel && styles.active}`}>
-    <div className={`${styles.holder} ${showDropDownModel && styles.active}`}>
+return <div className={`${styles.drop} ${showDropDownModal && styles.active}`}>
+    <div className={`${styles.holder} ${showDropDownModal && styles.active}`}>
         <div className={styles.list}>
             <ul>
-                {catagories.map((li,index)=>{
+                {catagories.map((category,index)=>{
                     return  <li key={index} onClick={()=> {
-                        dispatch(setShowDropDownModel(false));
-                        Navigate(`category/${li}`)
-                    }}>{li} ({data.filter((item)=> item.category.toLowerCase() === li).length})</li>
+                        dispatch(setShowDropDownModal(false));
+                        Navigate(`category/${category}`)
+                    }}>{category} ({posts.filter((post)=> post.category.toLowerCase() === category).length})</li>
                 })}
             </ul>
         </div>
         
-        <div className={styles.close} onClick={()=> dispatch(setShowDropDownModel(false))}>
+        <div className={styles.close} onClick={()=> dispatch(setShowDropDownModal(false))}>
             <FontAwesomeIcon icon={faTimes} />
         </div>
 

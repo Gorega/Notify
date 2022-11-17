@@ -1,18 +1,18 @@
-import styles from "../../styles/body/AddPost.module.css";
+import styles from "../styles/Create.module.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCamera, faInfo,faArrowLeft,faTimes,faSpinner } from '@fortawesome/free-solid-svg-icons'
 import { useState } from "react";
 import {useDispatch} from "react-redux";
-import {setPostModelError, setPostModelPage} from "../../features/postModelSlice";
+import { setModalError, setModalIndex } from "../features/createModalSlice";
 
-function AddImage({upload,deleteUplaodedFile,uploadedFile,loading,posterImage,doneUploading}){
-    const [showInfo,setShowInfo] = useState(false);
+function CreateUploader({posterImage,upload,deleteUplaodedFile,loading,doneUploading}){
     const dispatch = useDispatch()
+    const [showInfo,setShowInfo] = useState(false);
 
 return <div className={styles.upload}>
     <div className={styles.return} onClick={()=>{
-        dispatch(setPostModelPage(1));
-        dispatch(setPostModelError(null))
+        dispatch(setModalIndex(1));
+        dispatch(setModalError(null))
     }}>
         <FontAwesomeIcon icon={faArrowLeft} />
     </div>
@@ -25,8 +25,8 @@ return <div className={styles.upload}>
     </div>}
 
         {doneUploading && <div className={styles.uploadedImage}>
-        <div className={styles.close} onClick={deleteUplaodedFile}><FontAwesomeIcon icon={faTimes} /></div>
-            {loading ? <div className={styles.loading}><FontAwesomeIcon className="fa-spin" icon={faSpinner} /></div> : <img src={uploadedFile ? uploadedFile : posterImage} alt="" />}
+        <div className={styles.close} onClick={()=> deleteUplaodedFile("blogs/")}><FontAwesomeIcon icon={faTimes} /></div>
+            {loading ? <div className={styles.loading}><FontAwesomeIcon className="fa-spin" icon={faSpinner} /></div> : <img src={posterImage} alt="" />}
         </div>}
 
         {!doneUploading && <div className={styles.details}>
@@ -39,4 +39,4 @@ return <div className={styles.upload}>
 
 }
 
-export default AddImage;
+export default CreateUploader;

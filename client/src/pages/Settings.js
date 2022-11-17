@@ -4,16 +4,16 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCog,faUser,faLock, faEdit } from '@fortawesome/free-solid-svg-icons'
 import { useContext, useEffect, useState } from "react";
 import {useSelector,useDispatch} from "react-redux";
-import { setShowChangePassModel } from "../features/modelsSlice";
+import { setShowChangePassModal } from "../features/displaySlice";
 import {AppContext} from "../ContextApi";
-import PasswordModel from "../components/settings/PasswordModel";
+import PasswordModal from "../components/settings/PasswordModal";
 import CountriesList from "../Country_list.json";
-import ProfileImg from "../components/settings/ProfileImg";
+import AvatarUploader from "../components/settings/AvararUploader";
 
 function Settings(){
-    const {user,signedUser} = useContext(AppContext);
-    const {showChangePassModel} = useSelector((state)=> state.models)
     const dispatch = useDispatch();
+    const {user,signedUser} = useContext(AppContext);
+    const {showChangePassModal} = useSelector((state)=> state.display)
     const [switchDom,setSwitchDom] = useState(0);
     const [username,setUsername] = useState(user.username)
     const [first_name,set_first_name] = useState(user.first_name)
@@ -52,7 +52,7 @@ function Settings(){
         activeStatus:true,
         disabledStyle:true,
         icon:faEdit,
-        showModel: signedUser ? ()=> dispatch(setShowChangePassModel(true)) : ()=> dispatch(setShowChangePassModel(false)),
+        showModel: signedUser ? ()=> dispatch(setShowChangePassModal(true)) : ()=> dispatch(setShowChangePassModal(false)),
     }];
 
     const personalInfoFields = [{
@@ -154,25 +154,21 @@ function Settings(){
     }]
 
     useEffect(()=>{
-        if(showChangePassModel){
+        if(showChangePassModal){
             document.body.style.overflow = "hidden"
         }else{
             document.body.style.overflow = "auto"
         }
-    },[showChangePassModel])
-
-    useEffect(()=>{
-        console.log(signedUser)
-    },[signedUser])
+    },[showChangePassModal])
 
 return <>
-{showChangePassModel && <PasswordModel />}
+{showChangePassModal && <PasswordModal />}
 <div className={styles.settings}>
 <div className="container">
     <div className={styles.holder}>
         <div className={styles.leftSec}>
             <div className={styles.head}>
-                <ProfileImg />
+                <AvatarUploader />
                 <h2>{user.first_name ? (user.first_name + " " + user.last_name) : user.username}</h2>
             </div>
 

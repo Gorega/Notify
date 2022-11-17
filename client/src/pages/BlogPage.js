@@ -1,37 +1,35 @@
+import styles from "../styles/pages/BlogPage.module.css";
 import axios from "axios";
 import { useContext, useEffect, useState } from "react";
 import { useParams,Link, useNavigate } from "react-router-dom";
 import {AppContext} from "../ContextApi";
 import { server } from "../config";
-import styles from "../styles/pages/BlogPage.module.css";
 import {useDispatch} from "react-redux";
-import {setShowLoginModel} from "../features/modelsSlice";
+import {setShowLoginModal} from "../features/displaySlice";
 
 function BlogPage(){
 
-    const {id} = useParams();
+    const dispatch = useDispatch();
     const Navigate = useNavigate();
+    const {id} = useParams();
     const [commentValue,setCommentValue] = useState(null);
     const [data,setData] = useState([]);
     const {user,signedUser} = useContext(AppContext);
     const [comments,setComments] = useState([]);
     const [showComments,setShowComments] = useState(false);
-    const dispatch = useDispatch();
 
     const fetchPostData = ()=>{
-        axios.get(`${server}/api/v1/post/${id}`)
+        axios.get(`${server}/api/v1/post/${id}`,{withCredentials:true})
         .then(res=> {
             setData(res.data[0])
         })
-        .catch(err => console.log(err))
     }
 
     const fetchPostComments = ()=>{
-        axios.get(`${server}/api/v1/comments/${id}`)
+        axios.get(`${server}/api/v1/comments/${id}`,{withCredentials:true})
         .then(res=> {
             setComments(res.data.comments)
         })
-        .catch(err => console.log(err))
     }
 
     const addCommentHandler = (e)=>{
@@ -41,9 +39,8 @@ function BlogPage(){
             .then(res => {
                 setCommentValue("");
             })
-            .catch(err => console.log(err))
         }else{
-            dispatch(setShowLoginModel(true))
+            dispatch(setShowLoginModal(true))
         }
     }
 
@@ -70,7 +67,7 @@ return <div className={styles.blog}>
             
             <div className={styles.comments}>
                 <h2>{comments.length} Comments</h2>
-                <div className={styles.write} onClick={()=> signedUser || dispatch(setShowLoginModel(true))}>
+                <div className={styles.write} onClick={()=> signedUser || dispatch(setShowLoginModal(true))}>
                     <img src={signedUser ? user.prfile_img : "https://www.pngitem.com/pimgs/m/150-1503945_transparent-user-png-default-user-image-png-png.png"} alt=""/>
                     <form onSubmit={addCommentHandler}>
                         <input type="text" placeholder="Write a comment..." value={commentValue} onChange={(e)=> setCommentValue(e.target.value)} />

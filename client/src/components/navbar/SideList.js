@@ -4,17 +4,17 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTimes,faSortDown } from '@fortawesome/free-solid-svg-icons'
 import {Link} from "react-router-dom";
 import {useDispatch,useSelector} from "react-redux"
-import {setShowSideListModel,setShowLoginModel} from "../../features/modelsSlice";
-import Switch from '@mui/material/Switch';
+import {setShowSideListModal,setShowLoginModal} from "../../features/displaySlice";
 import { AppContext } from "../../ContextApi";
+import Switch from '@mui/material/Switch';
 import UserMenu from "./UserMenu";
 
 function SideList(){
-    const {signedUser,user} = useContext(AppContext);
-    const [showUserMenu,setShowUserMenu] = useState(false);
-    const {showSideListModel} = useSelector((state)=> state.models)
     const dispatch = useDispatch();
     const sideListRef = useRef();
+    const {signedUser,user} = useContext(AppContext);
+    const [showUserMenu,setShowUserMenu] = useState(false);
+    const {showSideListModal} = useSelector((state)=> state.display)
     const [theme,setTheme] = useState("light");
 
     const themeColorHandler = ()=>{
@@ -49,7 +49,7 @@ function SideList(){
     const closeShowSide = ()=>{
         window.addEventListener("mouseup",(e)=>{
             if(e.target.classList.contains(styles.main)){
-                dispatch(setShowSideListModel(false))
+                dispatch(setShowSideListModal(false))
             }
         })
     }
@@ -59,19 +59,19 @@ function SideList(){
         themeColorHandler();
         closeShowSide();
         document.body.style.overflow = "auto"
-        if(showSideListModel){
+        if(showSideListModal){
             document.body.style.overflow = "hidden"
             sideListRef.current.style.overflow = "auto"
         }
         return(()=>{
             window.removeEventListener("mouseup",closeShowSide)
         })
-    },[theme,showSideListModel])
+    },[theme,showSideListModal])
 
-return <div className={`${styles.main} ${showSideListModel && styles.active}`}>
-    <div className={`${styles.content} ${showSideListModel && styles.active}`} ref={sideListRef}>
+return <div className={`${styles.main} ${showSideListModal && styles.active}`}>
+    <div className={`${styles.content} ${showSideListModal && styles.active}`} ref={sideListRef}>
         <div className={styles.head}>
-            <span onClick={()=> dispatch(setShowSideListModel(false))}>CLOSE <FontAwesomeIcon icon={faTimes} /></span>
+            <span onClick={()=> dispatch(setShowSideListModal(false))}>CLOSE <FontAwesomeIcon icon={faTimes} /></span>
         </div>
         <div className={styles.options}>
             <ul>
@@ -86,7 +86,7 @@ return <div className={`${styles.main} ${showSideListModel && styles.active}`}>
                     </div>
                     {showUserMenu && <UserMenu classes={true} />}
                 </div>
-                : <li onClick={()=>dispatch(setShowLoginModel(true))}>Register / Log in</li>}
+                : <li onClick={()=>dispatch(setShowLoginModal(true))}>Register / Log in</li>}
                 </li>
                 <Link to="/"><li>Home</li></Link>
                 <li>Categories</li>

@@ -5,14 +5,14 @@ import Card from "../components/body/Card";
 import { useParams } from "react-router-dom";
 
 function CategoryPage(){
-    const {data,signedUser,user} = useContext(AppContext);
+    const {posts,signedUser,user} = useContext(AppContext);
     const {name} = useParams();
     const [innerData,setInnerData] = useState([])
 
     useEffect(()=>{
-       const filterData = data.filter((items)=> items.category.toLowerCase() === name.toLowerCase()); 
+       const filterData = posts.filter((items)=> items.category.toLowerCase() === name.toLowerCase()); 
        setInnerData(filterData);
-    },[name,data])
+    },[name,posts])
 
 return <div className={styles.category}>
     <div className="container">

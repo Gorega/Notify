@@ -1,12 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit'
-import postModelSlice from "./features/postModelSlice";
-import modelsSlice from "./features/modelsSlice";
+import createModalSlice from "./features/createModalSlice";
+import displaySlice from "./features/displaySlice";
 import userListSlice from './features/userListSlice';
 
 export const store = configureStore({
   reducer: {
-    postModel:postModelSlice,
-    models:modelsSlice,
+    createModal:createModalSlice,
+    display:displaySlice,
     userList:userListSlice
   },
   middleware: getDefaultMiddleware =>

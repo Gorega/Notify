@@ -5,12 +5,12 @@ import { useNavigate, useParams } from "react-router-dom";
 
 function BlogsSec(){
     const [blogs,setBlogs] = useState([]);
-    const {data} = useContext(AppContext);
+    const {posts} = useContext(AppContext);
     const {userId} = useParams();
     const Navigate = useNavigate();
 
     useEffect(()=>{
-        const filter = data.filter((items)=> items.user[0]._id === userId);
+        const filter = posts.filter((items)=> items.user[0]._id === userId);
         setBlogs(filter);
     },[userId])
 

@@ -3,7 +3,7 @@ import axios from "axios";
 import { useState } from "react";
 import { server } from "../../config";
 import {useParams} from "react-router-dom";
-import Layout from "../ModelLayout";
+import Layout from "../ModalLayout";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSpinner,faExclamationTriangle, faCheck } from "@fortawesome/free-solid-svg-icons";
 
@@ -31,7 +31,7 @@ function ResetPass(){
             setError({status:true,msg:err.response.data.msg});
         })
     }
-return <Layout model={true}>
+return <Layout modal={true}>
 <form onSubmit={submitHandler}>
     <div className={styles.formControl}>
         <label>New Password</label>
