@@ -13,7 +13,7 @@ import ResetPass from "./components/userLoggin/ResetPass";
 
 function App() {  
   return <>
-  <BrowserRouter>
+  <BrowserRouter basename="/">
     <Nav />
   <Routes>
     <Route path="/" element={<HomePage />  } />
