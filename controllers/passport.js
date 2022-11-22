@@ -21,7 +21,7 @@ passport.deserializeUser((_id,done)=>{
 passport.use(new GoogleStrategy({
     clientID: process.env.MAIL_CLIENT_ID,
     clientSecret: process.env.MAIL_CLIENT_SECRET,
-    callbackURL: "https://notify-gorega.herokuapp.com/auth/google/callback"
+    callbackURL: "https://notify-gorega.onrender.com/auth/google/callback"
   },
   async function(accessToken, refreshToken, profile, done) {
     const user = await User.findOne({googleId:profile.id});
@@ -40,7 +40,7 @@ passport.use(new GoogleStrategy({
 passport.use(new FacebookStrategy({
     clientID: process.env.FACEBOOK_APP_ID,
     clientSecret: process.env.FACEBOOK_APP_SECRET,
-    callbackURL: "https://notify-gorega.herokuapp.com/auth/facebook/callback",
+    callbackURL: "https://notify-gorega.onrender.com/auth/facebook/callback",
     profileFields: ['id', 'email', 'gender', 'photos', 'locale', 'name', 'timezone', 'updated_time', 'verified'],
   },
   async function(accessToken, refreshToken, profile, done) {
@@ -62,7 +62,7 @@ passport.use(new FacebookStrategy({
 passport.use(new GithubStrategy({
     clientID: process.env.GITHUB_CLIENT_ID,
     clientSecret: process.env.GITHUB_CLIENT_SECRET,
-    callbackURL: "https://notify-gorega.herokuapp.com/auth/github/callback",
+    callbackURL: "https://notify-gorega.onrender.com/auth/github/callback",
     scope:['user:email']
   },
   async function(accessToken, refreshToken, profile, done) {
@@ -94,7 +94,7 @@ const signUser = (req,res)=>{
     res.cookie("signed",true,{
         maxAge: 1000 * 3600 * 24 * 30 * 1
     })
-    return res.redirect("https://notify-gorega.herokuapp.com")
+    return res.redirect("https://notify-gorega.onrender.com")
 }
 
 module.exports = {signUser}

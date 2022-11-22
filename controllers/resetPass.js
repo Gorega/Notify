@@ -61,7 +61,7 @@ const forgetPass = async (req,res)=>{
                 <h3>Hi,</h3>
                 <p> We received a request to reset the password for your account. </p>
                 <p> To reset you password, click on the button below: </p>
-                <a href="https://notify-gorega.herokuapp.com/reset/pass/${token.token}"><button> Reset Password </button></a>
+                <a href="https://notify-gorega.onrender.com/reset/pass/${token.token}"><button> Reset Password </button></a>
             `
           };
           
