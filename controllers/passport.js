@@ -40,7 +40,7 @@ passport.use(new GoogleStrategy({
 passport.use(new FacebookStrategy({
     clientID: process.env.FACEBOOK_APP_ID,
     clientSecret: process.env.FACEBOOK_APP_SECRET,
-    callbackURL: "https://notify-gorega.onrender.com/auth/facebook/callback",
+    callbackURL: "https://notify-gorega-preview.onrender.com/auth/facebook/callback",
     profileFields: ['id', 'email', 'gender', 'photos', 'locale', 'name', 'timezone', 'updated_time', 'verified'],
   },
   async function(accessToken, refreshToken, profile, done) {
