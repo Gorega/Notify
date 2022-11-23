@@ -16,7 +16,6 @@ function UserMenu({classes}){
         .then(res => {
             window.location.replace("/");
         })
-        .catch(err =>console.log(err));
     }
 
 
