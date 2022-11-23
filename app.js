@@ -14,7 +14,7 @@ const passportRoute = require("./routes/passport");
 
 app.use(express.json());
 const corsOptions = {
-    origin: ["https://notify-gorega.onrender.com","http://localhost:3000"],
+    origin: ["https://notify-gorega-preview.onrender.com","https://notify-gorega.onrender.com","http://localhost:3000"],
     origin: true,
     credentials: true,
   };
