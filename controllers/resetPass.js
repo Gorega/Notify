@@ -67,9 +67,9 @@ const forgetPass = async (req,res)=>{
           
           transporter.sendMail(mailOptions, function(error, info){
             if (error) {
-              console.log(error);
+              // error handler
             } else {
-              console.log('Email sent: ' + info.response);
+              // success message
             }
           });
         return res.status(200).json({msg:"link has been send you your email"});
