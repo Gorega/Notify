@@ -78,7 +78,7 @@ return <>
                 <ul>
                     <li onClick={()=> window.location.href = `${server}/auth/google`}><FontAwesomeIcon icon={faGoogle} /> Google</li>
                     <li onClick={()=> window.location.href = `${server}/auth/facebook`}><FontAwesomeIcon icon={faFacebook} /> Facebook</li>
-                     <li onClick={()=> window.location.href = `${server}/auth/github`}><FontAwesomeIcon icon={faGithub} /> Github</li>
+                    <li onClick={()=> window.location.href = `${server}/auth/github`}><FontAwesomeIcon icon={faGithub} /> Github</li>
                 </ul>
             </div>
         </div>

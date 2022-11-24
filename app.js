@@ -11,10 +11,12 @@ const commentRoute = require("./routes/comment");
 const usersRoute = require("./routes/uesrs");
 const resetPassRoute = require("./routes/resetPass");
 const passportRoute = require("./routes/passport");
+const port = process.env.PORT || 8000
+
 
 app.use(express.json());
 const corsOptions = {
-    origin: ["https://notify-gorega-preview.onrender.com","http://localhost:3000"],
+    origin: ["https://notify-gorega-preview.onrender.com",`http://localhost:${port}`],
     origin: true,
     credentials: true,
   };
@@ -32,7 +34,7 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '/client/build', 'index.html'));
 });
 
-app.listen(process.env.PORT || 8000,async ()=>{
+app.listen(port,async ()=>{
     try{
         await connect(process.env.CONNECTION_STRING);
         // connection handler
