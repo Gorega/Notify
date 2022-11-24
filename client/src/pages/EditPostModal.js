@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react";
 import axios from "axios";
-import { server } from "../config";
+import { server } from "../lib/config";
 import {useSelector} from "react-redux"
 import Create from "../components/Create";
 import Layout from "../components/ModalLayout";

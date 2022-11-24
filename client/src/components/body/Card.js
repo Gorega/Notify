@@ -5,7 +5,7 @@ import { faSave,faArchive,faTrash,faEdit } from '@fortawesome/free-solid-svg-ico
 import { useNavigate } from "react-router-dom";
 import { AppContext } from "../../ContextApi";
 import axios from "axios";
-import { server } from "../../config";
+import { server } from "../../lib/config";
 import {useDispatch} from "react-redux";
 import {setPostId} from "../../features/createModalSlice";
 import {setEditPostModal, setShowLoginModal} from "../../features/displaySlice";

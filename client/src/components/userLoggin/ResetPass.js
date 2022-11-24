@@ -1,7 +1,7 @@
 import styles from "../../styles/userLoggin/ResetPass.module.css";
 import axios from "axios";
 import { useState } from "react";
-import { server } from "../../config";
+import { server } from "../../lib/config";
 import {useParams} from "react-router-dom";
 import Layout from "../ModalLayout";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

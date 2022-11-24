@@ -4,7 +4,7 @@ import {useDispatch} from "react-redux";
 import {setShowLoginModal,setShowForgetPassModal} from "../../features/displaySlice";
 import axios from "axios";
 import { useState } from "react";
-import {server} from "../../config";
+import {server} from "../../lib/config";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck, faSpinner } from "@fortawesome/free-solid-svg-icons";
 

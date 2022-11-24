@@ -5,7 +5,7 @@ import {faExclamationTriangle,faCheck,faSpinner} from "@fortawesome/free-solid-s
 import styles from "../../styles/userLoggin/Register.module.css";
 import { useState } from "react";
 import axios from "axios";
-import {server} from "../../config";
+import {server} from "../../lib/config";
 import {useDispatch} from "react-redux";
 import {setShowLoginModal,setShowRegisterModal} from "../../features/displaySlice";
 

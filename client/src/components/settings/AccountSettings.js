@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSpinner, faCheck } from '@fortawesome/free-solid-svg-icons'
 import {useState} from "react"
 import axios from "axios";
-import { server } from "../../config";
+import { server } from "../../lib/config";
 
 function AccountSettings({title,fields,style,innderData,gridForm}){
 

@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEye,faTimes,faExclamationTriangle,faSpinner,faCheck } from '@fortawesome/free-solid-svg-icons'
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { server } from "../../config";
+import { server } from "../../lib/config";
 import {useDispatch} from "react-redux";
 import {setShowChangePassModal} from "../../features/displaySlice";
 

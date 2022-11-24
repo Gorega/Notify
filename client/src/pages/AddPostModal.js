@@ -1,5 +1,5 @@
 import {useState} from "react";
-import {server} from "../config";
+import {server} from "../lib/config";
 import axios from "axios";
 import Create from "../components/Create";
 import Layout from "../components/ModalLayout";

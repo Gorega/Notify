@@ -3,7 +3,7 @@ import axios from "axios";
 import { useContext, useEffect, useState } from "react";
 import { useParams,Link, useNavigate } from "react-router-dom";
 import {AppContext} from "../ContextApi";
-import { server } from "../config";
+import { server } from "../lib/config";
 import {useDispatch} from "react-redux";
 import {setShowLoginModal} from "../features/displaySlice";
 

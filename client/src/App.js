@@ -1,5 +1,5 @@
 import {BrowserRouter,Routes,Route} from "react-router-dom";
-import {ProtectedRoutes} from "./ProtectedRoutes";
+import {ProtectedRoutes} from "./lib/ProtectedRoutes";
 import Nav from "./components/navbar/Nav";
 import HomePage from "./pages/HomePage";
 import CategoryPage from "./pages/CategoryPage";

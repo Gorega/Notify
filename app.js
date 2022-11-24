@@ -35,9 +35,8 @@ app.get('*', (req, res) => {
 app.listen(process.env.PORT || 8000,async ()=>{
     try{
         await connect(process.env.CONNECTION_STRING);
-        console.log(`connect to db success on port ${process.env.PORT || 8000} !`)
+        // connection handler
     }catch(err){
-        console.log(process.env.PORT)
-        console.log(err);
+        // error handler
     }
 })

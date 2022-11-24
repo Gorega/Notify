@@ -5,7 +5,7 @@ import { faFacebook,faGithub,faGoogle } from '@fortawesome/free-brands-svg-icons
 import {faExclamationTriangle} from "@fortawesome/free-solid-svg-icons"
 import { useState } from "react";
 import axios from "axios";
-import { server } from "../../config";
+import { server } from "../../lib/config";
 import {useDispatch} from "react-redux";
 import {setShowLoginModal,setShowRegisterModal,setShowForgetPassModal} from "../../features/displaySlice";
 
@@ -76,9 +76,9 @@ return <>
             <h2>Or sign in with</h2>
             <div className={styles.brands}>
                 <ul>
-                    <li onClick={()=> window.location.href = `https://notify-gorega.onrender.com/auth/google`}><FontAwesomeIcon icon={faGoogle} /> Google</li>
-                    <li onClick={()=> window.location.href = `https://notify-gorega.onrender.com/auth/facebook`}><FontAwesomeIcon icon={faFacebook} /> Facebook</li>
-                     <li onClick={()=> window.location.href = `https://notify-gorega.onrender.com/auth/github`}><FontAwesomeIcon icon={faGithub} /> Github</li>
+                    <li onClick={()=> window.location.href = `${server}/auth/google`}><FontAwesomeIcon icon={faGoogle} /> Google</li>
+                    <li onClick={()=> window.location.href = `${server}/auth/facebook`}><FontAwesomeIcon icon={faFacebook} /> Facebook</li>
+                     <li onClick={()=> window.location.href = `${server}/auth/github`}><FontAwesomeIcon icon={faGithub} /> Github</li>
                 </ul>
             </div>
         </div>

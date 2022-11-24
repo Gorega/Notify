@@ -9,7 +9,7 @@ import Login from "../userLoggin/Login";
 import Register from "../userLoggin/Register";
 import Forget from "../userLoggin/Forget";
 import {Link,useLocation,useNavigate} from "react-router-dom"
-import { server } from "../../config";
+import { server } from "../../lib/config";
 import axios from "axios";
 import EditPostModal from "../../pages/EditPostModal";
 import {useDispatch,useSelector} from "react-redux";

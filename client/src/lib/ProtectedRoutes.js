@@ -1,6 +1,6 @@
 import { useContext } from "react"
 import { Outlet } from "react-router-dom";
-import { AppContext } from "./ContextApi"
+import { AppContext } from "../ContextApi"
 
 
 export function ProtectedRoutes(){

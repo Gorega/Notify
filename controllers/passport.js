@@ -90,7 +90,6 @@ const signUser = (req,res)=>{
         httpOnly:true,
         useCredentials: false,
         maxAge: 1000 * 3600 * 24 * 30 * 1,
-        cookie:{domain:".notify-gorega-preview.onrender.com"}
     })
     res.cookie("signed",true,{
         maxAge: 1000 * 3600 * 24 * 30 * 1

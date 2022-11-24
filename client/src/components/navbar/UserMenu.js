@@ -1,7 +1,7 @@
 import styles from "../../styles/navbar/UserMenu.module.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons'
-import { server } from "../../config";
+import { server } from "../../lib/config";
 import axios from "axios";
 import {Link} from "react-router-dom";
 import { useContext } from "react";

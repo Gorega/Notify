@@ -5,7 +5,7 @@ import { faUser,faList,faFlag } from '@fortawesome/free-solid-svg-icons'
 import BlogsSec from "../components/profile/BlogsSec";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { server } from "../config";
+import { server } from "../lib/config";
 import axios from "axios";
 
 function ProfilePage(){

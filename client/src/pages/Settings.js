@@ -7,7 +7,7 @@ import {useSelector,useDispatch} from "react-redux";
 import { setShowChangePassModal } from "../features/displaySlice";
 import {AppContext} from "../ContextApi";
 import PasswordModal from "../components/settings/PasswordModal";
-import CountriesList from "../Country_list.json";
+import CountriesList from "../lib/Country_list.json";
 import AvatarUploader from "../components/settings/AvararUploader";
 
 function Settings(){

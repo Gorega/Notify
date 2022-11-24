@@ -4,7 +4,7 @@ import { useContext } from "react";
 import {AppContext} from "../../ContextApi";
 import styles from "../../styles/pages/Settings.module.css"
 import axios from "axios";
-import { server } from "../../config";
+import { server } from "../../lib/config";
 import {useUpload} from "../../lib/useUpload";
 
 function AvararUploader(){
