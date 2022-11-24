@@ -16,7 +16,7 @@ const port = process.env.PORT || 8000
 
 app.use(express.json());
 const corsOptions = {
-    origin: ["https://notify-gorega-preview.onrender.com",`http://localhost:${port}`],
+    origin: ["https://notify-gorega-preview.onrender.com","https://notify-gorega.onrender.com",`http://localhost:${port}`],
     origin: true,
     credentials: true,
   };
